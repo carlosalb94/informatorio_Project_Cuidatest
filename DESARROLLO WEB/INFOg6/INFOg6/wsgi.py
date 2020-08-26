@@ -1,5 +1,5 @@
 """
-WSGI config for INFOg6 project.
+WSGI config for info project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'INFOg6.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'info.settings')
 
 application = get_wsgi_application()
