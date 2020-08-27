@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CATALOGO</title>
+
+</head>
+<body>
+	<div>
+		<a href="{% url 'home' %}">Home</a><br>
+		<a href="{% url 'login' %}">login</a><br>
+		<a href="{% url 'registro' %}">Registrar</a><br>
+		<a href="{% url 'contacto' %}">Contacto</a><br>
+
+		<a href="{% url 'productos:listar' %}">Mostrar Productos</a>
+	</div>
+	<div  style="margin-top: 200px">
+		
+			{% block contenido %}
+				<h1>SOY EL BASEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!</h1>
+			{% endblock %}
+
+	</div>
+</body>
+</html>
