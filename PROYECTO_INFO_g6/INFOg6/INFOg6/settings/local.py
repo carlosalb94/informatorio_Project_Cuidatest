@@ -7,7 +7,7 @@ ALLOWED_HOSTS = []
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
-        'NAME':'INFODB',
+        'NAME':'Grupo6DB',
         'Trusted_Connection':'yes',
         'HOST':'localhost\SQLEXPRESS',
         'OPTIONS':{
