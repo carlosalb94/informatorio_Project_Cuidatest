@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CUIDATEST</title>
+
+</head>
+<body>
+	<div>
+		<a href="{% url 'home' %}">Home</a><br>
+		<p>HOLA {{user.username}}</p>
+		<a href="{% url 'Autotest:crear' %}">Realizar Autotest</a><br>
+		
+	</div>
+	<div  style="margin-top: 20px">
+		
+			{% block contenido %}
+				<h1>SOY EL BASEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!</h1>
+			{% endblock %}
+
+	</div>
+</body>
+</html>
