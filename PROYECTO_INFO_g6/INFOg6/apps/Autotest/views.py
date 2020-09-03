@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 
-from .forms import Autotest
+from .forms import AltaAutotest
 from .models import Autotest
 
 
@@ -11,7 +11,7 @@ from .models import Autotest
 # VISTAS BASADAS EN CLASES
 class Autotest(CreateView):
 	model = Autotest
-	form_class = Autotest
+	form_class = AltaAutotest
 	template_name = 'Autotest/crear.html'
 	success_url = reverse_lazy('home')
 
