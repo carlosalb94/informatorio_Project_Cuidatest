@@ -7,8 +7,14 @@
 <body>
 	<div>
 		<a href="{% url 'home' %}">Home</a><br>
-		<p>HOLA {{user.username}}</p>
-		<a href="{% url 'Autotest:crear' %}">Realizar Autotest</a><br>
+		{% if user.is_authenticated %}
+			<p>HOLA {{user.username}}</p>
+			<a href="{% url 'logout' %}">SALIR</a><br>
+		{% else %}
+			<a href="{% url 'login' %}">Login</a><br>
+			<a href="{% url 'users:registro' %}">Registrar</a><br>
+		{% endif %}
+		<a href="{% url 'Autotest:crear' %}">Solicitar Examen Hisopado</a><br>
 		
 	</div>
 	<div  style="margin-top: 20px">

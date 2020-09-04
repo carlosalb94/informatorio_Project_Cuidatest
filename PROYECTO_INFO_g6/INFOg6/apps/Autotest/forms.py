@@ -6,4 +6,7 @@ class AltaAutotest(forms.ModelForm):
 
 	class Meta:
 		model = Autotest
-		fields = '__all__'
+		fields = ['tosSeca', 'fiebre', 'dolorCabeza','dolorCorporal', 'contactoConPositivo',
+					'dificultadRespiratoria', 'enfermedad','vomitos','diarrea','dolordeGarganta',
+					'alteracionGustoOfalto','texto'
+				]
