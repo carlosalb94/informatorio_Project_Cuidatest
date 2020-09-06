@@ -1,5 +1,6 @@
 from .base import *
 
+
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -7,13 +8,11 @@ ALLOWED_HOSTS = []
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
-        'NAME':'Grupo6DB',
-        'HOST':'localhost',
-        'USER':'SA',
-        'PASSWORD':'c@rl0spec3',
+        'NAME':'CatalogoDB',
+        'Trusted_Connection':'yes',
+        'HOST': 'localhost',
         'OPTIONS':{
-        	'driver':'ODBC Driver 17 for SQL Server',
+        	'driver':'SQL Server Native Client 11.0',
         }
     },
 }
-
