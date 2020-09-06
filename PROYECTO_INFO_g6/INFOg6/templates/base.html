@@ -1,28 +1,73 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>CUIDATEST</title>
+	<head>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-</head>
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<link rel="stylesheet" href="../static/css/index.css">
+		<title>CUIDATEST</title>
+	</head>
 <body>
-	<div>
-		<a href="{% url 'home' %}">Home</a><br>
-		{% if user.is_authenticated %}
-			<p>HOLA {{user.username}}</p>
-			<a href="{% url 'logout' %}">SALIR</a><br>
-		{% else %}
-			<a href="{% url 'login' %}">Login</a><br>
-			<a href="{% url 'users:registro' %}">Registrar</a><br>
-		{% endif %}
-		<a href="{% url 'Autotest:crear' %}">Solicitar Examen Hisopado</a><br>
+	<header class="header fixed-top">
+		<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-dark">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+				<a class="navbar-brand" href="#footer">LOGO</a>
+			  
+				<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+				  <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+					<li class="nav-item">
+					  <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link"href="{% url 'login' %}">Ingresar</a>
+					</li>
+					{% if user.is_authenticated %}
+						<a class="nav-link" href="{% url 'logout' %}">Salir</a>
+						<a href="{% url 'Autotest:crear' %}">Solicitar Examen Hisopado</a>
+					{% endif %}
 		
-	</div>
-	<div  style="margin-top: 20px">
-		
-			{% block contenido %}
-				<h1>SOY EL BASEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!</h1>
-			{% endblock %}
+				  </ul>
+				</div>
+			  </nav>
+			</div>
+	</header>
+	
+	<div class="main h-100">
+		{% block contenido %}
 
+		{% endblock %}
 	</div>
+	
+	<footer class="footer" id="footer">
+		<div class="container">
+			<div class="row">
+				<nav class="navbar navbar-expand-lg navbar-dark w-100 justify-content-end align-items-baseline">
+					<div class="col-lg-4 text-white">
+						<p>Reportes: 0800 444 0829</p>
+						<p>Emergencias: 107 </p>
+						<p>Emergencias: 1162730000</p>
+					</div>
+					<div class="col-lg-4 text-white text-center">
+						<p class="developedBy">Desarrollado por Grupo6.Inc</p>
+					</div>
+					<div class="col-lg-4 text-center" >
+						<a href="" class="link-item text-white">Contactenos</a>
+					</div>
+					
+				</nav>
+			</div>
+		</div>
+	</footer>
+
 </body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </html>

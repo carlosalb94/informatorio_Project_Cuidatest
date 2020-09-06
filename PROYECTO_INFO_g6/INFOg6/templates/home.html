@@ -1,5 +1,59 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
-			<h1>SOY EL HOME</h1>	
+	<section class=carousel">
+		<div id="carousel" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="../static/images/WhatsApp Image 2020-08-31 at 16.25.27.jpeg" class="d-block w-100" alt="...">
+					<div class="carousel-caption d-none d-md-block">
+					<button type="button" class="btn btn-primary">Solicitar Hisopado</button>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="casos">
+		<div class="container">
+			<h3 class="font-weight-normal">Seguimiento de casos.</h3>
+			<div class="row justify-content-center">
+				<div class="col-lg-4 col-sm-12">
+					<div class="card text-center" style="width: 18rem;">
+						<div class="card-body">
+						  <h5 class="card-title">Casos en la provincia</h5>
+						  <p class="card-text">Positivos: </p>
+						  <p class="card-text">Recuperados: </p>
+						  <p class="card-text">Fallecidos: </p>
+						</div>
+					  </div>
+				</div>
+				<div class="col-lg-4 col-sm-12">
+					<div class="card text-center" style="width: 18rem;">
+						<div class="card-body">
+							<h5 class="card-title">Casos en el mundo</h5>
+							<p class="card-text">Positivos: </p>
+							<p class="card-text">Recuperados: </p>
+							<p class="card-text">Fallecidos: </p>
+						  </div>
+					  </div>
+				</div>
+			</div>
+		</div>
+	</section>	
+	<section class="solicitud">
+		<div class=container>
+			<h2 class="font-weight-normal">Que hacer si presento sintomas</h2>
+			<div class="row">
+				<div class="col-lg-12 justify-content-center">
+					<div class="card text-center">
+						<div class="card-body">
+						  <h5 class="card-title">Solicitar un hisopado</h5>
+						  <p class="card-text">Si Ud. presenta algun sintoma de Covid-19 podra solicitar un Hisopado aqui</p>
+						  <a href="#" class="btn btn-primary">Solicitar Hisopado</a>
+						</div>
+					  </div>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}

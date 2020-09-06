@@ -8,10 +8,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
         'NAME':'Grupo6DB',
-        'Trusted_Connection':'yes',
-        'HOST':'localhost\SQLEXPRESS',
+        'HOST':'localhost',
+        'USER':'SA',
+        'PASSWORD':'c@rl0spec3',
         'OPTIONS':{
-        	'driver':'SQL Server Native Client 11.0',
+        	'driver':'ODBC Driver 17 for SQL Server',
         }
     },
 }
