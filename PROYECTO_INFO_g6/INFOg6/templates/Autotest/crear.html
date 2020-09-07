@@ -1,11 +1,23 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block contenido %}
-			<h1>FORMULARIO AUTOTEST</h1>	
-			{{form.errors}}
-			<form method="POST">{% csrf_token %}
-					{{form.as_p}}
-					<input type="submit" value="ENVIAR">
-			</form>
+
+		<section class="testeo">
+			<div class="formulario">
+				<div class="row justify-content-center">
+				
+					
+					{{form.errors}}
+					<form method="POST" class="uniForm">{% csrf_token %}
+						<h1>FORMULARIO AUTOTEST</h1>	
+							<!--{{form.as_p}}-->
+							{{ form|crispy }}
+							<input type="submit" value="ENVIAR">
+					</form>
+				</div>
+			</div>
+		</section>
 			
 {% endblock %}
