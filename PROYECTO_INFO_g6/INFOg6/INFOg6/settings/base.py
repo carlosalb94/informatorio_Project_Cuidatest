@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'apps.users',
     'apps.Autotest',
-    'apps.Informacion',
     'apps.Solicitudes',  
 ]
 
@@ -124,4 +123,4 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),'media')
 
-CRISPY_TEMPLATE_PACK = 'BOOTSTRAP4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

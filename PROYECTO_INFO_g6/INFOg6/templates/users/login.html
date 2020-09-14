@@ -3,26 +3,28 @@
 {% load crispy_forms_tags %}
 
 {% block contenido %}
-		<section class="logueo">
-			
-			<div class="row justify-content-center"><h1>INICIAR SESION</h1> </div>
-			<div class="form_log">
-				<div class="row justify-content-center">
-
-
-					<form method="POST">{%csrf_token%}
-						{{form.errors}}
+<section class="login mh-100 my-5 py-5">
+	<div class="container-lg">
+		<div class="form-row justify-content-center">
+			<div class="form-group">
+				<h2 class="text-justify my-3">Ingresar</h2>
+				{{ form.errors }}
+				<form method="POST">{% csrf_token %}
+					<div class="col-12">
+						{{ form.username|as_crispy_field }}
+					</div>
+					<div class="col-12 form-group">
+						{{ form.password|as_crispy_field }}
+					</div>
+					<p>Si no tiene una cuenta <a class="link-item" href="{% url 'users:registro' %}">Registrate</a></p>
+					<div class="col-12">
+						<button class="btn btn-primary" type="submit" value="Ingresar" name="">Ingresar</button>
+					</div>
 				
-						<input type="text" name="username" placeholder="USUARIO">
-						<input type="password" name="password" placeholder="PASSWORD">
-						<input type="submit" name="" value="ENVIAR"  class="btn btn-primary">
-						<button type="button" class="btn btn-primary" onclick="location.href='{% url 'users:registro' %}'">REGISTRARME</button>
-					</form> 
 
-
-
-				</div>
+				</form>
 			</div>
-		</section>
-
+		</div>
+	</div>
+</section>
 {% endblock %}

@@ -12,5 +12,5 @@ urlpatterns = [
 
     # URLS DE APLICACIONES
     path('Autotest',include('apps.Autotest.urls')),
-    path('users', include('apps.users.urls')) 
+    path('users/', include('apps.users.urls')) 
 ]

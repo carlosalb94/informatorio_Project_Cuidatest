@@ -1,23 +1,27 @@
 {% extends 'base.html' %}
 
 {% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+
+
 
 {% block contenido %}
-
-		<section class="testeo">
-			<div class="formulario">
-				<div class="row justify-content-center">
-				
-					
-					{{form.errors}}
-					<form method="POST" class="uniForm">{% csrf_token %}
-						<h1>FORMULARIO AUTOTEST</h1>	
-							<!--{{form.as_p}}-->
-							{{ form|crispy }}
-							<input type="submit" value="ENVIAR">
-					</form>
-				</div>
+	<section class="autotest">
+		<div class="container-lg">
+			<div class="form-row py-5 my-5">
+				<h1>Form Autotest</h1>
+				{{form.errors}}
+				<form class="form-group my-5 py-5" method="POST">{% csrf_token %}
+					<div class="col-12 mh-1">
+						{{ form|crispy }}
+					</div>
+					<div class="col-12">
+						<button class="btn btn-primary" type="submit" value="Ingresar" name="">Ingresar</button>
+					</div>
+				</form>
 			</div>
-		</section>
-			
+		</div>
+	</section>			
 {% endblock %}
+
+

@@ -1,17 +1,72 @@
 {% extends 'base.html' %}
-
 {% load crispy_forms_tags %}
-
 {% block contenido %}
-		<section class="logueo">
-			<div class="row justify-content-center"><h1>REGISTRATE ACA!!!!</h1> </div>
+	<div class="container-lg">
+		<div class="row">
+			<div class="col form-group justify-content-center mt-5 pt-5">
+				
+				<h1>Registrate</h1>
+form|crispy
+				{{form.errors}}
+				<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+					<div class="form-row container-lg mx-5">
+						<div class="col-lg-3 mr-auto my-3">
+							{{form.username|as_crispy_field}}
+						</div>
+						<div class="col-lg-9 mr-auto my-3">
+							{{form.email|as_crispy_field}}
+						</div>
+						<div class="col-lg-6 mr-auto my-3">
+							{{form.first_name|as_crispy_field}}
+						</div>
+						<div class="col-lg-6 mr-auto my-3">
+							{{form.last_name|as_crispy_field}}
+						</div>
+						<div class="col-lg-5 mr-auto">
+							{{form.password1|as_crispy_field}}
+						</div>
+						<div class="col-lg-5 mr-auto">
+							{{form.password2|as_crispy_field}}
+						</div>
+						<div class="col-lg-4 mr-auto">
+							{{form.telefono|as_crispy_field}}
+						</div>
+						<div class="col-lg-7 mr-auto">
+							{{form.dni|as_crispy_field}}
+						</div>
+						<div class="col-lg-12 mr-auto">
+							{{form.fecha_nac|as_crispy_field}}
+						</div>
+						<div class="col-lg-12 mr-auto">
+							{{form.id_localidad|as_crispy_field}}
+						</div>
+					</div>
+					<div class="col-lg-6 ml-auto my-5">
+						<input type="submit" value="Registrarme" class="btn btn-primary">
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+<!--
+	<section class="logueo container">
+		<div class="row justify-content-center">
+			<h1>REGISTRATE ACA!!!!</h1>
 			<div class="form_log">
 				<div class="row justify-content-center">
-					
-						{{form.errors}}
+					{{form.errors}}
 					<form method="POST" enctype="multipart/form-data">{% csrf_token %}
-					{{ form|crispy }}
-					<input type="submit" value="CREAR" class="btn btn-primary">
-			</form>
-			
+						{{ form|crispy }}
+						<input type="submit" value="CREAR" class="btn btn-primary">
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+-->
+
+
+
+
 {% endblock %}
