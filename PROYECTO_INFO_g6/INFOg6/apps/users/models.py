@@ -12,13 +12,12 @@ class Localidad(models.Model):
 class Usuario(AbstractUser):
 	last_name = models.CharField(max_length=30, verbose_name = 'apellido')
 	first_name = models.CharField(max_length=150, verbose_name = 'nombre')
-	fecha_nac = models.DateField(default=True,verbose_name='fecha de nacimiento')
+	fecha_nac = models.DateField(null=True ,verbose_name='fecha de nacimiento')
 	dni = models.IntegerField()
 	id_localidad = models.ForeignKey('Localidad', on_delete=models.SET_NULL, null=True)
 	telefono = models.IntegerField()
 	domicilio = models.TextField(max_length=70, default=True)
-
-
+	REQUIRED_FIELDS = ['email','telefono', 'domicilio','dni', 'first_name', 'last_name']
 
 
 

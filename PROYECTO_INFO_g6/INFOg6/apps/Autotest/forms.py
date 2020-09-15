@@ -8,5 +8,5 @@ class AltaAutotest(forms.ModelForm):
 		model = Autotest
 		fields = ['tosSeca', 'fiebre', 'dolorCabeza','dolorCorporal', 'contactoConPositivo',
 					'dificultadRespiratoria', 'enfermedad','vomitos','diarrea','dolordeGarganta',
-					'alteracionGustoOfalto','texto', 'id_usuario',
+					'alteracionGustoOfalto','texto',
 				]

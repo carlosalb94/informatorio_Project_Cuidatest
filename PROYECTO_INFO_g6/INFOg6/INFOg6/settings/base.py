@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'apps.users',
     'apps.Autotest',
-    'apps.Solicitudes',  
 ]
 
 MIDDLEWARE = [
