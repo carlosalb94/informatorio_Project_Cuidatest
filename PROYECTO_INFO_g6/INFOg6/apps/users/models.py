@@ -8,6 +8,10 @@ class Localidad(models.Model):
 	nombre = models.CharField(max_length = 40, verbose_name = 'nombre localidad', null=False)
 	cant_habitantes = models.IntegerField(verbose_name = 'cantidad de habitantes', null=False) 
 
+	def __str__(self):
+		return f'{self.nombre}'
+		
+
 
 class Usuario(AbstractUser):
 	last_name = models.CharField(max_length=30, verbose_name = 'apellido')

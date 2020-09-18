@@ -7,7 +7,7 @@ class AltaAutotest(forms.ModelForm):
 	class Meta:
 		model = Autotest
 		fields = ['tosSeca', 'fiebre', 'dolorCabeza','dolorCorporal', 'contactoConPositivo',
-					'dificultadRespiratoria', 'enfermedad','vomitos','diarrea','dolordeGarganta',
+					'dificultadRespiratoria', 'enfermedad','mucosidad','vomitos','diarrea','dolordeGarganta',
 					'alteracionGustoOfalto','texto',
 				]
 
@@ -15,5 +15,4 @@ class AltaSolicitud(forms.ModelForm):
 
 	class Meta:
 		model = Solicitud
-		fields = ['__all__']
-
+		fields = '__all__'

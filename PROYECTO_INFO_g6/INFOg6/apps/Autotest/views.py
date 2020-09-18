@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 
-from .forms import AltaAutotest , AltaSolicitud
+from .forms import AltaAutotest, AltaSolicitud
 from .models import Autotest, Solicitud
 
 
@@ -11,26 +11,27 @@ def final(request):
 	return render(request, 'Autotest/final.html') 
 
 def validarAutotest(u):
-	if u.tosSeca  and u.dolorCorporal and u.fiebre:
-		return True
-	else:
-		return False
+	contador = 0
+	sintomas = [u.tosSeca, u.fiebre, u.dolordeGarganta, u.contactoConPositivo, u.dolorCabeza, 
+				u.dificultadRespiratoria, u.alteracionGustoOfalto, u.mucosidad, u.enfermedad,
+				u.vomitos, u.diarrea, u.dolorCorporal]
 
+	for s in sintomas:
+		print(s)
+		if s: 
+			contador += 1
+
+		if contador>3:
+			return True
+
+	return False
+	
 
 # VISTAS BASADAS EN CLASES
-'''
+
 class Solicitud(CreateView):
 	model = Solicitud
 	form_class = AltaSolicitud
-
-	def form_valid(self, form):
-		u = form.save(commit = False)
-		u.id_autotest = None
-		u.id_usuario = self.request.user
-		u.resultado = None
-		u.fecha_creacion = '05/05/1994'
-		u.fecha_hisopado = None
-'''
 
 class Autotest(CreateView):
 	model = Autotest
@@ -38,14 +39,10 @@ class Autotest(CreateView):
 	template_name = 'Autotest/crear.html'
 	success_url = reverse_lazy('Autotest:final')
 	
-	
-
 	def form_valid(self, form):
 		u = form.save(commit = False)
 		u.id_usuario = self.request.user
-	#	u.corresponde_hisopado = validarAutotest(u)
-	#	if u.corresponde_hisopado:
-	#		s = Solicitud()
+		u.corresponde_hisopado = validarAutotest(u)
 		u.save()
 		return redirect(self.success_url)
 
