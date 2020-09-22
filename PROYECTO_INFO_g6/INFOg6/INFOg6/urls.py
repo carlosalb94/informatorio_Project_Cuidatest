@@ -11,5 +11,6 @@ urlpatterns = [
     path('Logout',auth.LogoutView.as_view(),name="logout"),
     # URLS DE APLICACIONES
     path('Autotest/',include('apps.Autotest.urls')),
-    path('users/', include('apps.users.urls')) 
+    path('users/', include('apps.users.urls')),
+    path('informe/', include('apps.informe.urls')),
 ]

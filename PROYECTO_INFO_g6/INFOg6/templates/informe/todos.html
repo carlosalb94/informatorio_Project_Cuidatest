@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+
+<h1> Hola soy el informe</h1>
+
+	{% for a in Autotest %}
+
+		<p>{{a.tosSeca}}</p>
+		
+	{% endfor %}
+
+
+
+{% endblock %}
