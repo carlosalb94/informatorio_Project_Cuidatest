@@ -8,4 +8,5 @@ app_name="informe"
 urlpatterns = [
 	path('listarAutotest/', views.ListarAutotest, name = "listarAutotest"),
 	path('listarXLocalidad/', views.ListarXLocalidad, name = "listarXLocalidad"),
+
 ]

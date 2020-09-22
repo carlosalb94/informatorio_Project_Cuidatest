@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView
+from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 
 from .forms import AltaAutotest, AltaSolicitud
@@ -29,9 +30,9 @@ def validarAutotest(u):
 
 # VISTAS BASADAS EN CLASES
 
-class Solicitud(CreateView):
-	model = Solicitud
-	form_class = AltaSolicitud
+# class Solicitud(CreateView):
+# 	model = Solicitud
+# 	form_class = AltaSolicitud
 
 class Autotest(CreateView):
 	model = Autotest
@@ -46,6 +47,8 @@ class Autotest(CreateView):
 		u.save()
 		return redirect(self.success_url)
 
+class ListarSolicitudes(ListView): 
+	model = Solicitud 
+	template_name = 'autotest/listarsolicitudes.html'
 	
-
 # COMO TRANSEFIR EL ID_AUTOTEST AL MOMENTO DE DAR DE ALTA UNA SOLICITUD
