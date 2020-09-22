@@ -16,3 +16,11 @@ class AltaSolicitud(forms.ModelForm):
 	class Meta:
 		model = Solicitud
 		fields = '__all__'
+
+
+	def save(self,commit=True):
+			autotest= super().save()
+			Solicitud.objects.create(id_autotest_id =8,
+									id_usuario_id =4)
+			return autotest
+		

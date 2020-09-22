@@ -34,9 +34,11 @@
 							{{form.dni|as_crispy_field}}
 						</div>
 						<div class="col-lg-12  col-sm-12 mr-auto">
-							<div class="input-group date" id="datepicker1" data-target-input="nearest">
+							<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
 								{{ form.fecha_nac }}
-								<div id="datepicker1"></div>
+								<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+									<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+								</div>
 							</div>
 						</div>
 						<div class="col-lg-12 col-sm-12 mr-auto">
@@ -53,7 +55,9 @@
 	</div>
 	<script type="text/javascript">
 		$(function () {
-		$("#datepicker1").datepicker();
+		$("#datetimepicker1").datetimepicker({
+		  format: 'DD/MM/YYYY HH:mm',
+		});
 	  });</script>
 <!--
 	<section class="logueo container">

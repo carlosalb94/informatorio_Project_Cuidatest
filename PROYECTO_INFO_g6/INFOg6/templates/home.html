@@ -21,33 +21,36 @@
 
 	{% if user.is_authenticated %}
 		<section class="solicitud mb-5">
-			<div class=container-lg>
-				<h2 class="font-weight-normal">Que hacer si presento sintomas</h2>
-				<div class="row">
-					<div class="col-lg-12 justify-content-center">
-						<div class="card text-center">
-							<div class="card-body">
-							<h5 class="card-title">Solicitar un hisopado</h5>
-							<p class="card-text">Si Ud. presenta algun sintoma de Covid-19 podra solicitar un Hisopado aqui</p>
-							{% if user.is_authenticated %}
-							<a href="{% url 'Autotest:crear' %}" class="btn btn-primary">Solicitar Hisopado</a>
-							{% else %}
-							<a href="{% url 'login' %}" class="btn btn-primary">Solicitar Hisopado</a>
-							{% endif %}
-							</div>
-						</div>
-					</div>
+			<div class="container-lg">
+			<h3 class="font-weight-normal">TUS TRÁMITES</h3>
+			<div class="row justify-content-center">
+				<div class="col-lg-3 mx-0">
+					<p class="font-weight-bold">Estado de solicitud aquí</p>
+					<button type="button" class="btn btn-primary" onclick="location.href='{% url 'Autotest:crear' %}'">-----SOLICITUD-----</button><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi 				bi-arrow-return-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  													<path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+												</svg>
+				</div>
+				<div class="col-lg-3 mx-0">
+					<p class="font-weight-bold">Resultado hisopado aquí.</p>
+					<button type="button" class="btn btn-primary" onclick="location.href='{% url 'Autotest:crear' %}'">-----RESULTADOS-----</button><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-return-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  													<path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+												</svg>
+
 				</div>
 			</div>
-		</section>
+		</div>
+		
 	{% endif %}
 
 	<section class="casos">
 		<div class="container-lg">
-			<h3 class="font-weight-normal">Seguimiento de casos.</h3>
+			<blockquote class="blockquote">
+  				<h3 class="font-weight-normal">NÚMEROS DE CASOS ACTUALIZADOS</h3>
+  				<footer class="blockquote-footer">según datos del Ministerio de Salud</footer>
+			</blockquote>
 			<div class="row justify-content-center">
 				<div class="col-lg-3 mx-2">
-					<div class="card text-center mb-5" style="width: 18rem;">
+					<div class="card text-center bg-primary mb-5" style="width: 18rem;">
 						<div class="card-body">
 						  <h5 class="card-title">Casos en Resistencia</h5>
 						  <p class="card-text">Positivos: </p>
@@ -57,7 +60,7 @@
 					  </div>
 				</div>
 				<div class="col-lg-3 mx-2">
-					<div class="card text-center mb-5" style="width: 18rem;">
+					<div class="card text-center bg-primary mb-5" style="width: 18rem;">
 						<div class="card-body">
 							<h5 class="card-title">Casos en Argentina</h5>
 							<p class="card-text">Positivos: </p>
@@ -74,64 +77,84 @@
 	<section id="faq">
 		<div class="container-lg">
 		  <header class="section-header">
-			<h3>Preguntas frecuentes</h3>
+			<h3 class="font-weight-normal">PREGUNTAS FRECUENTES</h3>
 		  </header>
   
 		  <ul id="faq-list" class="wow fadeInUp col-lg-12">
 			  
-			<li>
-			  <a data-toggle="collapse" class="collapsed link-item" href="#faq1">Non consectetur a erat nam at lectus urna duis? <i class="ion-android-remove"></i></a>
+			  <button type='button' class='btn btn-primary '>
+			  <a data-toggle="collapse" href="#faq1" class="collapsed text-dark text-decoration-none font-weight-bold font-italic">¿Qué es un coronavirus? ¿Qué es el SARS-CoV2? ¿Qué es COVID-19?
+				<i class="ion-android-remove"></i> </button></a>
 			  <div id="faq1" class="collapse" data-parent="#faq-list">
 				<p>
-				  Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+				  Los coronavirus son una familia de virus que pueden causar enfermedades en animales y en humanos. En los seres humanos pueden provocar infecciones respiratorias que van desde un resfrío común hasta enfermedades más graves, como el síndrome respiratorio de Medio Oriente (MERS) y el síndrome respiratorio agudo severo (SRAS-SARS).
+				  Actualmente nos encontramos ante una pandemia (epidemia que se propaga a escala mundial) por un nuevo coronavirus, SARS-CoV-2, que fue descubierto recientemente y causa la enfermedad por coronavirus COVID-19.
 				</p>
-			  </div>
-			</li>
-  
-			<li>
-			  <a data-toggle="collapse" href="#faq2" class="collapsed">Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque? <i class="ion-android-remove"></i></a>
+			  </div><br>
+
+			<br>  
+			
+			  <button type='button' class='btn btn-primary '>
+			  <a data-toggle="collapse" href="#faq2" class="collapsed text-dark text-decoration-none font-weight-bold font-italic">¿Cómo se transmite el virus?
+				<i class="ion-android-remove"></i> </button></a>
 			  <div id="faq2" class="collapse" data-parent="#faq-list">
 				<p>
-				  Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+				  Se transmite de una persona a otra a través de las gotas procedentes de la nariz o la boca que salen despedidas cuando la persona con el virus tose, estornuda o habla. Otra posibilidad es por contacto con manos, superficies u objetos contaminados. Por eso es importante mantener distanciamiento social y tomar las precauciones de contacto que se describen más abajo.
 				</p>
-			  </div>
-			</li>
+			  </div><br>
+
+			<br>
   
-			<li>
-			  <a data-toggle="collapse" href="#faq3" class="collapsed">Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi? <i class="ion-android-remove"></i></a>
+			
+			  <button type='button' class='btn btn-primary '>
+			  <a data-toggle="collapse" href="#faq3" class="collapsed text-dark text-decoration-none font-weight-bold font-italic">¿Cuáles son los síntomas del Covid 19?<i class="ion-android-remove"></i> </button></a>
 			  <div id="faq3" class="collapse" data-parent="#faq-list">
 				<p>
-				  Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+				  Si tenés dos o más de los siguientes síntomas: fiebre de 37,5°C, tos, dolor de garganta, dificultad respiratoria, dolor muscular, cefalea, diarrea y/o vómitos, o si tenés solo pérdida brusca de gusto u olfato, consultá al sistema de salud de tu localidad.
 				</p>
-			  </div>
-			</li>
+			  </div><br>
+
+			<br>
   
-			<li>
-			  <a data-toggle="collapse" href="#faq4" class="collapsed">Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla? <i class="ion-android-remove"></i></a>
+			
+			  <button type='button' class='btn btn-primary '>
+			  <a data-toggle="collapse" href="#faq4" class="collapsed text-dark text-decoration-none font-weight-bold font-italic">¿Qué puedo hacer para prevenir el COVID-19?<i class="ion-android-remove"></i> </button></a>
 			  <div id="faq4" class="collapse" data-parent="#faq-list">
 				<p>
-				  Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-				</p>
-			  </div>
-			</li>
-  
-			<li>
-			  <a data-toggle="collapse" href="#faq5" class="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="ion-android-remove"></i></a>
+				  Para disminuir el riesgo de contraer COVID-19 te sugerimos:<br>
+
+					-Distanciamiento social: evitá reuniones, eventos y salir de casa en general, excepto para actividades absolutamente esenciales.<br>
+					-Mantené la higiene de las manos lavandolas regularmente con agua y jabón o colocando alcohol en gel.<br>
+					-Limpiá periódicamente las superficies y los objetos que usás todos los días.<br>
+					-Ventilá todos los ambientes de tu casa y de los espacios de trabajo.<br>
+					-Usá tapaboca o barbijo casero si tenés que salir de tu casa.<br>
+					-Evitar tocarse la nariz,los ojos y la boca.<br> </p>
+				</div><br>
+  			<br>
+			
+			
+			  <button type='button' class='btn btn-primary '>
+			  <a data-toggle="collapse" href="#faq5" class="collapsed text-dark text-decoration-none font-weight-bold font-italic">¿Qué debo hacer si entro en contacto estrecho con una persona con COVID-19?<i class="ion-android-remove"></i> </button></a>
 			  <div id="faq5" class="collapse" data-parent="#faq-list">
 				<p>
-				  Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
-				</p>
+					Si sos identificado como contacto de una persona con infección confirmada por COVID-19, debés reforzar tu aislamiento durante 14 días contados desde el último contacto con el caso confirmado de COVID-19, controlar tu salud e informar cualquier síntoma. Si vivís con otras personas, a su vez, debés cumplir estrictamente el aislamiento dentro de tu domicilio y no tener contacto estrecho con ningún conviviente, sobre todo si la persona es mayor de 60 años o si forma parte de un grupo de riesgo.</p>
+			   </div> <br>
+			   <br>
+
+  			  <button type='button' class='btn btn-primary '>
+			  <a data-toggle="collapse" href="#faq6" class="collapsed text-dark text-decoration-none font-weight-bold font-italic">¿Dónde puedo consultar información actualizada y veraz sobre COVID-19?<i class="ion-android-remove"></i> </button></a>
+			   <div id="faq6" class="collapse" data-parent="#faq-list">
+			   	 <p>
+			   	 	En la era de las comunicaciones, la desinformación es moneda corriente y peligrosa. Eventos como la pandemia por COVID-19 nos pone en la necesidad de obtener información al instante, por tal motivo es frecuente la difusión de contenidos falsos o erróneos.
+
+					Para evitar confusiones, debés buscar información en sitios cuentas de redes sociales que permitan comprobar su veracidad, como los del Ministerio de Salud de la República Argentina, de la Organización Mundial de la Salud o de la Organización Panamericana de la Salud.
+
+					Desconfiá de —y no difundas— rumores, mensajes y audios de Whatsapp provenientes de supuestas autoridades en la materia que difundan información que no pueda ser verificada.
+
+					La plataforma CONFIAR es un espacio para despejar dudas en torno a las múltiples fuentes de desinformación que rodean al coronavirus. Allí se hace un seguimiento y verificación de la información que circula, y se brindan herramientas y criterios para diferenciar la calidad y veracidad de las noticias.
+			  	 </p>
 			  </div>
-			</li>
-  
-			<li>
-			  <a data-toggle="collapse" href="#faq6" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="ion-android-remove"></i></a>
-			  <div id="faq6" class="collapse" data-parent="#faq-list">
-				<p>
-				  Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
-				</p>
-			  </div>
-			</li>
+			
 			
 		  </ul>
   

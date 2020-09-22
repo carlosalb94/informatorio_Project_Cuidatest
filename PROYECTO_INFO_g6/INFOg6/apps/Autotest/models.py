@@ -19,6 +19,10 @@ class Autotest(models.Model):
 	texto = models.TextField(max_length=200, verbose_name='Sintomas/Información que desee agregar', null=True)
 	corresponde_hisopado = models.BooleanField(null=True)
 
+
+	
+
+
 class Solicitud(models.Model):
 
 	id_solicitud = models.AutoField(primary_key=True)
@@ -28,6 +32,10 @@ class Solicitud(models.Model):
 	estado = models.IntegerField(default=1, null=False)
 	fecha_creacion = models.DateField()
 	fecha_hisopado = models.DateField(default=True)
+
+
+
+
 
 
 

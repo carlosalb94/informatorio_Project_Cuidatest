@@ -6,5 +6,6 @@ from . import views
 app_name="informe"
 
 urlpatterns = [
-	path('generarInforme/', views.generarInforme, name = "generarInforme"),
+	path('listarAutotest/', views.ListarAutotest, name = "listarAutotest"),
+	path('listarXLocalidad/', views.ListarXLocalidad, name = "listarXLocalidad"),
 ]
