@@ -1,4 +1,5 @@
 from django.db import models
+
 # from users.models import *
 # Create your models here.
 
@@ -20,18 +21,17 @@ class Autotest(models.Model):
 	corresponde_hisopado = models.BooleanField(null=True)
 
 
-	
 
 
 class Solicitud(models.Model):
 
 	id_solicitud = models.AutoField(primary_key=True)
 	id_autotest = models.ForeignKey('Autotest.Autotest', on_delete=models.CASCADE)
-	id_usuario = models.OneToOneField('users.Usuario', on_delete=models.CASCADE)
+	id_usuario = models.ForeignKey('users.Usuario', on_delete=models.CASCADE) ##foreing key
 	resultado = models.BooleanField(null=True)
-	estado = models.IntegerField(default=1, null=False)
-	fecha_creacion = models.DateField()
-	fecha_hisopado = models.DateField(default=True)
+	estado = models.BooleanField(default=False, null=False)
+	fecha_creacion = models.DateTimeField(auto_now_add = True)
+	fecha_hisopado = models.DateTimeField(null= True)
 
 
 

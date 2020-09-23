@@ -47,11 +47,11 @@
 								<li class="nav-item">
 								  <a class="nav-link" href="{% url 'Autotest:crear' %}">Solicitar Examen Hisopado </a>
 								</li>
-								<li class="nav-item ml-auto">
+								<li class="nav-item mr-auto">
 									<div class="dropdown">
 										<a class="nav-link dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.username}}</a></a>
 										<div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
-											<a class="dropdown-item" href="#">Estado de Solicitud</a>
+											<a class="dropdown-item" href="{% url 'Autotest:listarSolicitudes' %}">Estado de Solicitud</a>
 											<a class="dropdown-item" href="{% url 'logout' %}">Salir </a>
 										</div>
 									</div>
@@ -72,17 +72,13 @@
 
 					{% endif %}
 
-
-
-
-		
 				  </ul>
 				</div>
 			  </nav>
 			</div>
 	</header>
 	
-	<div class="main h-100">
+	<div class="main min-100 max-100">
 		{% block contenido %}
 
 		{% endblock %}

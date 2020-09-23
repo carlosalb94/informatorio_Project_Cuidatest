@@ -45,7 +45,9 @@ class Autotest(CreateView):
 		u.id_usuario = self.request.user
 		u.corresponde_hisopado = validarAutotest(u)
 		u.save()
+		Solicitud.objects.create(id_usuario=u.id_usuario,id_autotest=u)
 		return redirect(self.success_url)
+
 
 class ListarSolicitudes(ListView): 
 	model = Solicitud 

@@ -2,23 +2,63 @@
 
 {% load crispy_forms_tags %}
 {% load crispy_forms_field %}
-
-
+{% crispy form form.helper "bootstrap4" %}
 
 {% block contenido %}
 	<section class="autotest">
 		<div class="container-lg">
-			<div class="form-row py-5 my-5">
-				<h1>Form Autotest</h1>
-				{{form.errors}}
-				<form class="form-group my-5 py-5" method="POST">{% csrf_token %}
-					<div class="col-12 mh-1">
-						{{ form|crispy }}
-					</div>
-					<div class="col-12">
-						<button class="btn btn-primary" type="submit" value="Ingresar" name="">Ingresar</button>
-					</div>
-				</form>
+			<div class="row py-5 my-5">
+				<div class="col-lg-12">
+					<h1>Autoevaluacion Covid-19</h1>
+					<p>Indique si posee algunos de los siguientes sintomas</p>
+					{{form.errors}}
+					<form class="form-group my-4 py-4" method="POST">{% csrf_token %}
+						<div class="col-lg-12">
+							{{form.tosSeca | as_crispy_field}}
+						</div>
+						<div class="col-lg-12">
+							{{form.fiebre | as_crispy_field}}
+						</div>
+						<div class="col-lg-12">
+							{{form.dolorCabeza| as_crispy_field}}
+						</div>
+						<div class="col-lg-12">
+							{{form.dolorCorporal| as_crispy_field}}
+						</div>
+						<div class="col-lg-12">
+							{{form.dolordeGarganta| as_crispy_field}}
+						</div>
+						<div class="col-lg-12">
+							{{form.contactoConPositivo| as_crispy_field}}
+						</div>
+						<div class="col-lg-12">
+							{{form.dificultadRespiratoria| as_crispy_field}}
+						</div>
+						<div class="col-lg-12">
+							{{form.enfermedad| as_crispy_field}}
+						</div>
+						<div class="col-lg-12">
+							{{form.mucosidad| as_crispy_field}}
+						</div>
+						<div class="col-lg-12">
+							{{form.vomitos| as_crispy_field}}
+						</div>
+						<div class="col-lg-12">
+							{{form.diarrea| as_crispy_field}}
+						</div>
+						<div class="col-lg-12">
+							{{form.alteracionGustoOfalto| as_crispy_field}}
+							
+						</div>
+
+						<div class="col-lg-5 col-md-5 col-sm-5">
+							{{form.texto| as_crispy_field}}
+						</div>
+						<div class="col-12">
+							<button class="btn btn-primary" type="submit" value="Enviar" name="">Ingresar</button>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</section>			

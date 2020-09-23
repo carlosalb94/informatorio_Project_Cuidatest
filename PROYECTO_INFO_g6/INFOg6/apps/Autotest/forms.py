@@ -1,4 +1,5 @@
 from django import forms
+from datetime import date
 
 from .models import Autotest, Solicitud
 
@@ -10,7 +11,7 @@ class AltaAutotest(forms.ModelForm):
 					'dificultadRespiratoria', 'enfermedad','mucosidad','vomitos','diarrea','dolordeGarganta',
 					'alteracionGustoOfalto','texto',
 				]
-
+	
 class AltaSolicitud(forms.ModelForm):
 
 	class Meta:
@@ -18,9 +19,3 @@ class AltaSolicitud(forms.ModelForm):
 		fields = '__all__'
 
 
-	def save(self,commit=True):
-			autotest= super().save()
-			Solicitud.objects.create(id_autotest_id =8,
-									id_usuario_id =4)
-			return autotest
-		

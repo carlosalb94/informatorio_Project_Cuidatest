@@ -1,5 +1,6 @@
 body {
     background-color: #F0FFFF;
+    box-sizing: border-box;
 }
 
 .header{

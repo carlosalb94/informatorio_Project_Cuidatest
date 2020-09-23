@@ -1,8 +1,7 @@
-{% extends 'base.html' %} {% block contenido %}
-<div class="container" style="margin-top: 10px">
-  <h2>Hola aca estan las solicitudes</h2>
+{% extends 'base.html' %} 
 
-  <div class="container-lg">
+{% block contenido %}
+  <div class="container-lg py-5 my-5">
     <div class="row">
       <div class="col-lg-12 my-6 py-5">
         <h3>Estado de sus solicitudes</h3>
@@ -11,12 +10,12 @@
           
             {% if p.id_usuario_id == user.id %}
                     <div class="card">
-                        <div class="card-header" id="headingOne">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"  aria-expanded="false" aria-controls="collapseOne" >
-                            {{p.fecha_hisopado}}
-                            </button>
-                        </h5>
+                        <div class="card-header bg-light" id="headingOne">
+                          <h5 class="mb-0">
+                              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"  aria-expanded="false" aria-controls="collapseOne">
+                              Fecha de Hisopado: {{p.fecha_hisopado}}
+                              </button>
+                          </h5>
                         </div>
                         <div
                         id="collapseOne"
@@ -24,14 +23,13 @@
                         aria-labelledby="headingOne"
                         data-parent="#accordion"
                         >
-                        <div class="card-body">
-                            <h5><b>NUMERO SOLICITUD: </b>{{p.id_solicitud}}</h5>
-                            <h5><b>Usuario: </b>{{p.id_usuario}}</h5>
-                            <h5><b>Estado: </b>{{p.estado}}</h5>
-                            <h5><b>Resultado: </b>{{p.Resultado}}</h5>
-                            <h5><b>Fecha Creacion: </b>{{p.fecha_creacion}}</h5>
-                            
-
+                          <div class="card-body">
+                              <h5><b>NUMERO SOLICITUD: </b>{{p.id_solicitud}}</h5>
+                              <h5><b>Usuario: </b>{{p.id_usuario}}</h5>
+                              <h5><b>Estado: </b>{{p.estado}}</h5>
+                              <h5><b>Resultado: </b>{{p.Resultado}}</h5>
+                              <h5><b>Fecha Creacion: </b>{{p.fecha_creacion}}</h5>
+                              
                         </div>
                         </div>
                     </div>
@@ -43,5 +41,4 @@
       </div>
     </div>
   </div>
-  {% endblock %}
-</div>
+{% endblock %}

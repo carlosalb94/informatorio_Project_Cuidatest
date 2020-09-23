@@ -9,8 +9,8 @@ from apps.users.models import Localidad, Usuario
 def ListarAutotest(request):
 
 	context = {}
-	todos = Solicitud.objects.all()
-	context['solicitud'] = todos
+	todos = Autotest.objects.all()
+	context['autotest'] = todos
 
 	return render(request, 'informe/todos.html', context) 
 
