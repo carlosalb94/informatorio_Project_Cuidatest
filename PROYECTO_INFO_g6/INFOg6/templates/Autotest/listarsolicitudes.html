@@ -6,9 +6,10 @@
       <div class="col-lg-12 my-6 py-5">
         <h3>Estado de sus solicitudes</h3>
         <div id="accordion">
-          {% for p in object_list %} 
-          
-            {% if p.id == user.id %}
+            
+            
+            {% for p in solicitudes %} 
+            {% if p.usuario_id == user.id %}
                     <div class="card">
                         <div class="card-header bg-light" id="headingOne">
                           <h5 class="mb-0">

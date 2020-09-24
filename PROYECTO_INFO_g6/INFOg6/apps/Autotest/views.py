@@ -8,8 +8,7 @@ from .models import Autotest, Solicitud
 
 
 # VISTA BASADA EN FUNCIONES
-def final(request):
-	return render(request, 'Autotest/final.html') 
+
 
 def validarAutotest(unAutotest):
 	contador = 0
@@ -29,29 +28,36 @@ def validarAutotest(unAutotest):
 
 # VISTAS BASADAS EN CLASES
 
-# class Solicitud(CreateView):
-# 	model = Solicitud
-# 	form_class = AltaSolicitud
-
 class Autotest(CreateView):
 	model = Autotest
 	form_class = AltaAutotest
 	template_name = 'Autotest/crear.html'
 	success_url = reverse_lazy('Autotest:final')
+	inc_url = reverse_lazy('Autotest:inc_final')
 	
 	def form_valid(self, form):
 		unAutotest = form.save(commit = False)
 		unAutotest.usuario = self.request.user
 		unAutotest.corresponde_hisopado = validarAutotest(unAutotest)
 		unAutotest.save()
+		print(unAutotest.corresponde_hisopado)
 		if  unAutotest.corresponde_hisopado:
 			Solicitud.objects.create(usuario= unAutotest.usuario,autotest=unAutotest)
-
-		return redirect(self.success_url)
-
-
-class ListarSolicitudes(ListView): 
-	model = Solicitud 
-	template_name = 'autotest/listarsolicitudes.html'
+			return redirect(self.success_url)
 	
+		return redirect(self.inc_url)
+
+		
+# class ListarSolicitudes(ListView): 
+# 	model = Solicitud 
+# 	template_name = 'autotest/listarsolicitudes.html'
+	
+def ListarSolicitudes(request): 
+	context = {}
+	todos = Solicitud.objects.all()
+	context['solicitudes'] = todos
+
+	return render(request,'Autotest/listarsolicitudes.html',context)
+
+
 # COMO TRANSEFIR EL ID_AUTOTEST AL MOMENTO DE DAR DE ALTA UNA SOLICITUD
