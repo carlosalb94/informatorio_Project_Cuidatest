@@ -26,10 +26,18 @@
                           <div class="card-body">
                               <h5><b>NUMERO SOLICITUD: </b>{{p.solicitud}}</h5>
                               <h5><b>Usuario: </b>{{p.usuario}}</h5>
-                              <h5><b>Estado: </b>{{p.estado}}</h5>
-                              <h5><b>Resultado: </b>{{p.resultado}}</h5>
-                              <h5><b>Fecha Creacion: </b>{{p.fecha_creacion}}</h5>
-                              
+                              {% if p.estado == 1 %}
+                                <h5><b>Estado: </b>  VISITA PROGRAMADA AL DOMICILIO</h5>
+                              {% elif p.estado == 2 %}
+                                <h5><b>Estado: </b>  PENDIENTE DE ASIGNAR RESULTADO</h5>
+                              {%else%}
+                                <h5><b>Estado: </b>  RESULTADO ASIGNADO</h5>
+                                {% if p.resultado %}
+                                  <h5><b>Resultado: </b> POSITIVO COVID19</h5>
+                                {%else%}
+                                  <h5><b>Resultado: </b> NEGATIVO COVID19</h5>
+                                {% endif %}
+                              {% endif%} 
                         </div>
                         </div>
                     </div>

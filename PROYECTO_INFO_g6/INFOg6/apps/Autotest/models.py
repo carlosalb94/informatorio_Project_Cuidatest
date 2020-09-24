@@ -21,6 +21,7 @@ class Autotest(models.Model):
 	diarrea = models.BooleanField(verbose_name='Diarrea')
 	corresponde_hisopado = models.BooleanField(null=True)
 
+	
 
 
 
@@ -33,6 +34,9 @@ class Solicitud(models.Model):
 	estado = models.IntegerField(default=1, null=False)   # 1 = Pendiente de hisopar / 2 = Hisopado  / 3 = Resultado Cargado
 	fecha_creacion = models.DateTimeField(auto_now_add = True)
 	fecha_hisopado = models.DateTimeField(null= True)
+
+	def __str__(self):
+		pass
 
 
 

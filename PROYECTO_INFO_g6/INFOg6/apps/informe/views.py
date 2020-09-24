@@ -16,19 +16,25 @@ def ListarAutotest(request):
 
 
 def ListarXLocalidad(request):
+	
 	context = {}
 	localidades = Localidad.objects.all()
-	context['localidad'] = localidades
-	
-	id_localidad = request.GET.get('filtro',None)
+	context['localidades'] = localidades
 
-	usuario = Usuario.objects.filter(id_localidad= id_localidad)
+
+	localidad = request.GET.get("filtro", None)  #retorna el id en string en un queryset
+
+	print(localidad[0])
+
+	usuarios = Usuario.objects.filter(localidad= localidad[0])
 
 	resultado1 = []
 
-	for u in usuario:
 
-		resultado1.append(Autotest.objects.filter(id_usuario= u.id))
+	for u in usuarios:
+
+		re = Autotest.objects.filter(usuario = u)
+		resultado1.append(re[0])
 
 	context['autotest'] = resultado1
 
