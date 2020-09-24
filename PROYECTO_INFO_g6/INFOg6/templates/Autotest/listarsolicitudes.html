@@ -8,12 +8,12 @@
         <div id="accordion">
           {% for p in object_list %} 
           
-            {% if p.id_usuario_id == user.id %}
+            {% if p.id == user.id %}
                     <div class="card">
                         <div class="card-header bg-light" id="headingOne">
                           <h5 class="mb-0">
                               <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"  aria-expanded="false" aria-controls="collapseOne">
-                              Fecha de Hisopado: {{p.fecha_hisopado}}
+                              Fecha de Creación: {{p.fecha_creacion}}
                               </button>
                           </h5>
                         </div>
@@ -24,10 +24,10 @@
                         data-parent="#accordion"
                         >
                           <div class="card-body">
-                              <h5><b>NUMERO SOLICITUD: </b>{{p.id_solicitud}}</h5>
-                              <h5><b>Usuario: </b>{{p.id_usuario}}</h5>
+                              <h5><b>NUMERO SOLICITUD: </b>{{p.solicitud}}</h5>
+                              <h5><b>Usuario: </b>{{p.usuario}}</h5>
                               <h5><b>Estado: </b>{{p.estado}}</h5>
-                              <h5><b>Resultado: </b>{{p.Resultado}}</h5>
+                              <h5><b>Resultado: </b>{{p.resultado}}</h5>
                               <h5><b>Fecha Creacion: </b>{{p.fecha_creacion}}</h5>
                               
                         </div>

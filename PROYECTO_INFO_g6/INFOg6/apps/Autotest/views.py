@@ -11,14 +11,13 @@ from .models import Autotest, Solicitud
 def final(request):
 	return render(request, 'Autotest/final.html') 
 
-def validarAutotest(u):
+def validarAutotest(unAutotest):
 	contador = 0
-	sintomas = [u.tosSeca, u.fiebre, u.dolordeGarganta, u.contactoConPositivo, u.dolorCabeza, 
-				u.dificultadRespiratoria, u.alteracionGustoOfalto, u.mucosidad, u.enfermedad,
-				u.vomitos, u.diarrea, u.dolorCorporal]
+	sintomas = [unAutotest.tosSeca,unAutotest.fiebre,unAutotest.dolordeGarganta,unAutotest.contactoConPositivo,
+				unAutotest.dolorCabeza,unAutotest.dificultadRespiratoria,unAutotest.alteracionGustoOfalto,
+				unAutotest.mucosidad,unAutotest.enfermedad,unAutotest.vomitos,unAutotest.diarrea,unAutotest.dolorCorporal]
 
 	for s in sintomas:
-		print(s)
 		if s: 
 			contador += 1
 
@@ -41,11 +40,13 @@ class Autotest(CreateView):
 	success_url = reverse_lazy('Autotest:final')
 	
 	def form_valid(self, form):
-		u = form.save(commit = False)
-		u.id_usuario = self.request.user
-		u.corresponde_hisopado = validarAutotest(u)
-		u.save()
-		Solicitud.objects.create(id_usuario=u.id_usuario,id_autotest=u)
+		unAutotest = form.save(commit = False)
+		unAutotest.usuario = self.request.user
+		unAutotest.corresponde_hisopado = validarAutotest(unAutotest)
+		unAutotest.save()
+		if  unAutotest.corresponde_hisopado:
+			Solicitud.objects.create(usuario= unAutotest.usuario,autotest=unAutotest)
+
 		return redirect(self.success_url)
 
 

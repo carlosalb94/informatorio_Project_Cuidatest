@@ -15,4 +15,4 @@ class RegistroUsuarioForm(UserCreationForm):
 		model = Usuario
 		fields = ['username','email','first_name',
 				'last_name','password1','password2', 
-				'id_localidad', 'telefono', 'dni', 'fecha_nac']
+				'localidad', 'telefono', 'dni', 'fecha_nac']

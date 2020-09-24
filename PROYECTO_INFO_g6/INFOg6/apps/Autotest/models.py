@@ -4,20 +4,21 @@ from django.db import models
 # Create your models here.
 
 class Autotest(models.Model):
-	id_usuario = models.ForeignKey('users.Usuario',on_delete=models.CASCADE)
-	tosSeca= models.BooleanField(verbose_name= 'Tos seca', null=True)
-	fiebre = models.BooleanField(verbose_name='Fiebre', null=True)
-	dolordeGarganta = models.BooleanField(verbose_name='Dolor de garganta', null=True)
-	dolorCorporal = models.BooleanField(verbose_name='Dolor corporal', null=True)
-	contactoConPositivo = models.BooleanField(verbose_name='Contacto con una persona covid positivo', null=True)
-	dolorCabeza = models.BooleanField(verbose_name='Dolor de cabeza', null=True)
-	dificultadRespiratoria = models.BooleanField(verbose_name='Dificultad respiratoria', null=True)
-	alteracionGustoOfalto = models.BooleanField(verbose_name='Alteración gusto/olfato', null=True)
-	mucosidad = models.BooleanField(verbose_name='Mucosidad', null=True)
-	enfermedad = models.BooleanField(verbose_name='Enfermedad preexistente', null=True)
-	vomitos = models.BooleanField(verbose_name='Vomitos o nauseas', null=True)
-	diarrea = models.BooleanField(verbose_name='Diarrea', null=True)
-	texto = models.TextField(max_length=200, verbose_name='Sintomas/Información que desee agregar', null=True)
+
+	usuario = models.ForeignKey('users.Usuario',on_delete=models.CASCADE)
+
+	tosSeca= models.BooleanField(verbose_name= 'Tos seca')
+	fiebre = models.BooleanField(verbose_name='Fiebre')
+	dolordeGarganta = models.BooleanField(verbose_name='Dolor de garganta')
+	dolorCorporal = models.BooleanField(verbose_name='Dolor corporal')
+	contactoConPositivo = models.BooleanField(verbose_name='Contacto con una persona covid positivo')
+	dolorCabeza = models.BooleanField(verbose_name='Dolor de cabeza')
+	dificultadRespiratoria = models.BooleanField(verbose_name='Dificultad respiratoria')
+	alteracionGustoOfalto = models.BooleanField(verbose_name='Alteración gusto/olfato')
+	mucosidad = models.BooleanField(verbose_name='Mucosidad')
+	enfermedad = models.BooleanField(verbose_name='Enfermedad preexistente')
+	vomitos = models.BooleanField(verbose_name='Vomitos o nauseas')
+	diarrea = models.BooleanField(verbose_name='Diarrea')
 	corresponde_hisopado = models.BooleanField(null=True)
 
 
@@ -25,11 +26,11 @@ class Autotest(models.Model):
 
 class Solicitud(models.Model):
 
-	id_solicitud = models.AutoField(primary_key=True)
-	id_autotest = models.ForeignKey('Autotest.Autotest', on_delete=models.CASCADE)
-	id_usuario = models.ForeignKey('users.Usuario', on_delete=models.CASCADE) ##foreing key
+	autotest = models.ForeignKey('Autotest.Autotest', on_delete=models.CASCADE)
+	usuario = models.ForeignKey('users.Usuario', on_delete=models.CASCADE) 
+	
 	resultado = models.BooleanField(null=True)
-	estado = models.BooleanField(default=False, null=False)
+	estado = models.IntegerField(default=1, null=False)   # 1 = Pendiente de hisopar / 2 = Hisopado  / 3 = Resultado Cargado
 	fecha_creacion = models.DateTimeField(auto_now_add = True)
 	fecha_hisopado = models.DateTimeField(null= True)
 
