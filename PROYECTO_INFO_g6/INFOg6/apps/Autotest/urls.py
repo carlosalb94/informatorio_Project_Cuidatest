@@ -11,4 +11,6 @@ urlpatterns = [
 	path('finTest/', views.Autotest.as_view(template_name="Autotest/final.html"), name='final'),
 	path('IncorrectTest/', views.Autotest.as_view(template_name="Autotest/inc_final.html"), name='inc_final'),
 	path('listarSolicitudes/', views.ListarSolicitudes, name = 'listarSolicitudes'),
+	path('CargaResultados/', views.CargaResultados, name = 'resultados'),
+	path('Modificar/<str:pk>', views.Modificar.as_view(), name="modificar"),
 ]

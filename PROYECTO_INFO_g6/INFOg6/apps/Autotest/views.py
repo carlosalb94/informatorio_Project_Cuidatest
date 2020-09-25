@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView
+from django.views.generic.edit import UpdateView
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 
-from .forms import AltaAutotest, AltaSolicitud
+from .forms import AltaAutotest, AltaSolicitud,CargaResultadosForm
 from .models import Autotest, Solicitud
 
 
@@ -58,6 +59,19 @@ def ListarSolicitudes(request):
 	context['solicitudes'] = todos
 
 	return render(request,'Autotest/listarsolicitudes.html',context)
+
+def CargaResultados(request): 
+	context = {}
+	todos = Solicitud.objects.all()
+	context['solicitudes'] = todos
+
+	return render(request,'Autotest/carga_resultados.html',context)
+
+class Modificar(UpdateView):
+	model = Solicitud
+	form_class = CargaResultadosForm
+	template_name = 'Autotest/modificar.html'
+	success_url = reverse_lazy('Autotest:resultados')
 
 
 # COMO TRANSEFIR EL ID_AUTOTEST AL MOMENTO DE DAR DE ALTA UNA SOLICITUD

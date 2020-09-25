@@ -19,3 +19,10 @@ class AltaSolicitud(forms.ModelForm):
 		fields = '__all__'
 
 
+class CargaResultadosForm(forms.ModelForm):
+
+	class Meta:
+		model = Solicitud
+		fields = ['estado','resultado']
+
+

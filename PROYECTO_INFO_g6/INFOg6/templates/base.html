@@ -38,8 +38,9 @@
 				</button>
 				<a class="navbar-brand" href="#footer">LOGO</a>
 			  
-					{% if user.is_authenticated %}
-						<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+					{% if user.is_authenticated %} 
+						{% if not user.is_staff and not user.is_superuser %} <!---verifica si el usuario es normal--->
+							<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 				 			 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 								<li class="nav-item">
 								  <a class="nav-link" href="{% url 'home' %}">Home</a>
@@ -56,6 +57,53 @@
 										</div>
 									</div>
 								</li>
+						{% endif %}
+						{% if user.is_staff and not user.is_superuser %} <!---verifica si el usuario es solo de staff--->
+								<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+				 			 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+								<li class="nav-item">
+								  <a class="nav-link" href="{% url 'home' %}">Home</a>
+								</li>
+								<li class="nav-item">
+								  <a class="nav-link" href="{% url 'Autotest:resultados' %}">Cargar Resultados </a>
+								</li>
+								<li class="nav-item mr-auto">
+									<div class="dropdown">
+										<a class="nav-link dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.username}}</a></a>
+										<div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+											<a class="dropdown-item" href="{% url 'Autotest:resultados' %}">Cargar Resultados</a>
+											<a class="dropdown-item" href="{% url 'logout' %}">Salir </a>
+										</div>
+									</div>
+								</li>
+						{% endif %}
+						{% if user.is_superuser %} <!---verifica si el usuario es super--->
+							<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+				 			 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+								<li class="nav-item">
+								  <a class="nav-link" href="{% url 'home' %}">Home</a>
+								</li>
+								<li class="nav-item">
+								  <a class="nav-link" href="{% url 'Autotest:crear' %}">Solicitar Examen Hisopado </a>
+								</li>
+								<li class="nav-item">
+								  <a class="nav-link" href="{% url 'Autotest:resultados' %}">Cargar Resultados </a>
+								</li>
+								<li class="nav-item mr-auto">
+									<div class="dropdown">
+										<a class="nav-link dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.username}}</a></a>
+										<div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+											<a class="dropdown-item" href="{% url 'Autotest:listarSolicitudes' %}">Estado de Solicitud</a>
+											<a class="dropdown-item" href="{% url 'Autotest:resultados' %}">Cargar Resultado</a>
+											<a class="dropdown-item" href="{% url 'logout' %}">Salir </a>
+										</div>
+									</div>
+								</li>
+						{% endif %}
+
+					
+					
+
 					{% else %}
 						<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 					  		<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
