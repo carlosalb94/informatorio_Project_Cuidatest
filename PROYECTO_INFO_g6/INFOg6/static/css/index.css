@@ -35,5 +35,12 @@ body {
 }
 
 .borde-btn{
-    border: 1px solid #1B262C;
+   
+    border-radius: 5px;
+}
+
+.main{
+    height: inherit !important;
+    width: inherit !important;
+    box-sizing: border-box;
 }

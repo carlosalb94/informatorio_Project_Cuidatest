@@ -41,6 +41,3 @@ class Solicitud(models.Model):
 
 
 
-
-
-

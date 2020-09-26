@@ -5,6 +5,7 @@
 {% crispy form form.helper "bootstrap4" %}
 
 {% block contenido %}
+
 	<section class="autotest">
 		<div class="container-lg">
 			<div class="row py-5 my-5">
@@ -12,47 +13,56 @@
 					<h1>Autoevaluacion Covid-19</h1>
 					<p>Indique si posee algunos de los siguientes sintomas</p>
 					{{form.errors}}
-					<form class="form-group my-4 py-4" method="POST">{% csrf_token %}
+					<form class="form-group border rounded bg-light my-4 py-4" method="POST">{% csrf_token %}
 						<div class="col-lg-12">
-							{{form.tosSeca | as_crispy_field}}
+							<label for="{{form.tosSeca.label}}">Tos</label>
+							<input type="checkbox" name="tosSeca" id="id_tosSeca">
 						</div>
 						<div class="col-lg-12">
-							{{form.fiebre | as_crispy_field}}
+							<label for="{{form.fiebre.label}}">Fiebre mayor a 37.5</label>
+							<input type="checkbox" name="fiebre" id="id_fiebre">
 						</div>
 						<div class="col-lg-12">
-							{{form.dolorCabeza| as_crispy_field}}
+							<label for="{{form.dolorCabeza.label}}">Dolor de cabeza</label>
+							<input type="checkbox" name="dolorCabeza" id="id_dolorCabeza">
 						</div>
 						<div class="col-lg-12">
-							{{form.dolorCorporal| as_crispy_field}}
+							<label for="{{form.dolorCorporal.label}}">Dolor  corporal</label>
+							<input type="checkbox" name="dolorCorporal" id="id_dolorCorporal">
 						</div>
 						<div class="col-lg-12">
-							{{form.dolordeGarganta| as_crispy_field}}
+							<label for="{{form.dolordeGarganta.label}}">Dolor de garganta</label>
+							<input type="checkbox" name="dolordeGarganta" id="id_dolordeGarganta">						</div>
+						<div class="col-lg-12">
+							<label for="{{form.contactoConPositivo.label}}">Estuvo en contacto estrecho con un paciente Covid positivo</label>
+							<input type="checkbox" name="contactoConPositivo" id="id_contactoConPositivo">
 						</div>
 						<div class="col-lg-12">
-							{{form.contactoConPositivo| as_crispy_field}}
+							<label for="{{form.dificultadRespiratoria.label}}">Dificultad respiratoria</label>
+							<input type="checkbox" name="dificultadRespiratoria" id="id_dificultadRespiratoria">
 						</div>
 						<div class="col-lg-12">
-							{{form.dificultadRespiratoria| as_crispy_field}}
+							<label for="{{form.enfermedad.label}}">Posee enfermedades preexistentes</label>
+							<input type="checkbox" name="enfermedad" id="id_enfermedad">						</div>
+						<div class="col-lg-12">
+							<label for="{{form.mucosidad.label}}">Mucosidad</label>
+							<input type="checkbox" name="mucosidad" id="id_mucosidad">
 						</div>
 						<div class="col-lg-12">
-							{{form.enfermedad| as_crispy_field}}
+							<label for="{{form.vomitos.label}}">Vomitos</label>
+							<input type="checkbox" name="vomitos" id="id_vomitos">
 						</div>
 						<div class="col-lg-12">
-							{{form.mucosidad| as_crispy_field}}
+							<label for="{{form.diarrea.label}}">Diarrea</label>
+							<input type="checkbox" name="diarrea" id="id_diarrea">
 						</div>
 						<div class="col-lg-12">
-							{{form.vomitos| as_crispy_field}}
-						</div>
-						<div class="col-lg-12">
-							{{form.diarrea| as_crispy_field}}
-						</div>
-						<div class="col-lg-12">
-							{{form.alteracionGustoOfalto| as_crispy_field}}
-							
+							<label for="{{form.alteracionGustoOfalto.label}}">Alteraciones de gusto u olfato</label>
+							<input type="checkbox" name="alteracionGustoOfalto" id="id_alteracionGustoOfalto">
 						</div>
 
-						
 						<div class="col-12">
+							<p></p>
 							<button class="btn btn-primary" type="submit" value="Enviar" name="">Ingresar</button>
 						</div>
 					</form>

@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block contenido %}
 <section class="login mh-100 my-5 py-5">
 	<div class="container-lg">
 		<div class="form-row justify-content-center">
-			<div class="form-group">
-				<h2 class="text-justify my-3">Ingresar</h2>
+			<div class="form-group border rounded bg-light p-3 mt-5">
+				<div class="col-lg-4 mx-auto">
+					<img src="{% static 'images/user.svg' %}" width="50" height="50" alt="">
+				</div>
+				<h2 class="text-center my-3">Ingresar</h2>
 				{{ form.errors }}
 				<form method="POST">{% csrf_token %}
 					<div class="col-12">
@@ -17,7 +20,7 @@
 						{{ form.password|as_crispy_field }}
 					</div>
 					<p>Si no tiene una cuenta <a class="link-item" href="{% url 'users:registro' %}">Registrate</a></p>
-					<div class="col-12">
+					<div class="col-6 m-auto">
 						<button class="btn btn-primary" type="submit" value="Ingresar" name="">Ingresar</button>
 					</div>
 				

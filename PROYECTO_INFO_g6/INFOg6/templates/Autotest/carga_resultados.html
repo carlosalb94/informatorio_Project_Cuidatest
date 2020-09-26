@@ -6,39 +6,54 @@
       <div class="col-lg-12 my-6 py-5">
         <h3>Carga de Resultados</h3>
         <div id="accordion">
-            
-            
+          <!--FILTRO-->
+            <form method="GET">
+              <input type="number" name="filtro">
+              <button type="submit">filtrar</button>
+            </form>
+            <!--FIN FILTRO-->
             {% for p in solicitudes %} 
-            
-                    <div class="card">
-                        <div class="card-header bg-light" id="headingOne">
+              
+                    <div class="card my-4">
+                        <div class="card-header bg-light" id="heading_{{p.id}}">
                           <h5 class="mb-0">
-                              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"  aria-expanded="false" aria-controls="collapseOne">
-                              Fecha de Creación: {{p.fecha_creacion}}
+                              <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_{{p.id}}"  aria-expanded="false" aria-controls="collapse_{{p.id}}">
+                              Solicitud de: {{p.usuario}} |  Fecha de creacion: {{p.fecha_creacion}}
                               </button>
                           </h5>
                         </div>
                         <div
-                        id="collapseOne"
+                        id="collapse_{{p.id}}"
                         class="collapse"
-                        aria-labelledby="headingOne"
+                        aria-labelledby="heading_{{p.id}}"
                         data-parent="#accordion"
                         >
                           <div class="card-body">
-                              <h5><b>NUMERO SOLICITUD: </b>{{p.solicitud}}</h5>
-                              <h5><b>Usuario: </b>{{p.usuario}}</h5>
+                            <h4 class="text">Numero solicitud: {{p.id}}</h4>
+                            <h6 class="text"><b>Usuario:</b> {{p.usuario}}</h6>
+                            <h6 class="text"><b>Dni:</b> {{p.usuario.dni}}</h6>
+                            <h6 class="text"><b>Domicilio</b> {{p.usuario.domicilio}}</h6>
                               {% if p.estado == 1 %}
-                                <h5><b>Estado: </b>  VISITA PROGRAMADA AL DOMICILIO</h5>
-                              {% elif p.estado == 2 %}
-                                <h5><b>Estado: </b>  PENDIENTE DE ASIGNAR RESULTADO</h5>
-                              {%else%}
-                                <h5><b>Estado: </b>  RESULTADO ASIGNADO</h5>
-                                {% if p.resultado %}
-                                  <h5><b>Resultado: </b> POSITIVO COVID19</h5>
-                                {%else%}
-                                  <h5><b>Resultado: </b> NEGATIVO COVID19</h5>
+                                {% if p.fecha_hisopado %}
+                                  <h6 class="text"><b>Estado:</b>Hisopado asignado</h6>
+                                  <h6 class="text"><b>Fecha de hisopado:</b>{{p.fecha_hisopado}}</h6>
+                                {% else %}
+                                  <h6 class="text"><b>Estado:</b>En espera de asignacion de turno</h6>
+                                  <h6 class="text"><b>Fecha de hisopado:</b>En espera de asignacion de fecha</h6>
                                 {% endif %}
-                              {% endif%} 
+                              {% elif p.estado == 2 %}
+                                <h6 class="text"><b>Estado:</b>Hisopado realizado, en espera de resultado</h6>
+                                <h6 class="text"><b>Fecha de hisopado:</b>{{p.fecha_hisopado}}</h6>
+                                <h6 class="text"><b>Resultado:</b>En espera..</h6>
+                              {% else %}
+                                <h6 class="text"><b>Estado:</b>Realizado</h6>
+                                <h6 class="text"><b>Fecha de hisopado:</b>{{p.fecha_hisopado}}</h6>
+                                {% if p.resultado %}
+                                  <h6 class="text"><b>Resultado:</b>Positivo COVID-19</h6>
+                                {% else %}
+                                  <h6 class="text"><b>Resultado:</b>Negativo COVID-19</h6>
+                                {% endif %}
+                              {% endif %} 
                               <button type="button" class="btn btn-primary" onclick="location.href='{% url 'Autotest:modificar' p.id %}'">Cargar Resultado </button>
                         </div>
                         </div>

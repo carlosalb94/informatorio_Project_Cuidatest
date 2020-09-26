@@ -8,7 +8,8 @@ class Localidad(models.Model):
 	nombre = models.CharField(max_length = 40, verbose_name = 'nombre localidad', null=False)
 	cant_habitantes = models.IntegerField(verbose_name = 'cantidad de habitantes', null=False) 
 
-	
+	def __str__(self):
+		return self.nombre
 
 		
 
@@ -26,8 +27,7 @@ class Usuario(AbstractUser):
 	REQUIRED_FIELDS = ['email','telefono', 'domicilio','dni', 'first_name', 'last_name','fecha_nac']
 
 	def __str__(self):
-		return  f'NOMBRE: {self.first_name} APELLIDO: {self.last_name} ' \
-				f'DOMICILIO: {self.domicilio}'\
+		return self.first_name+' '+self.last_name
 
 
 

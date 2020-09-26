@@ -35,37 +35,48 @@ class Autotest(CreateView):
 	template_name = 'Autotest/crear.html'
 	success_url = reverse_lazy('Autotest:final')
 	inc_url = reverse_lazy('Autotest:inc_final')
-	
+
 	def form_valid(self, form):
 		unAutotest = form.save(commit = False)
 		unAutotest.usuario = self.request.user
 		unAutotest.corresponde_hisopado = validarAutotest(unAutotest)
 		unAutotest.save()
-		print(unAutotest.corresponde_hisopado)
+
 		if  unAutotest.corresponde_hisopado:
 			Solicitud.objects.create(usuario= unAutotest.usuario,autotest=unAutotest)
 			return redirect(self.success_url)
 	
 		return redirect(self.inc_url)
 
-		
-# class ListarSolicitudes(ListView): 
-# 	model = Solicitud 
-# 	template_name = 'autotest/listarsolicitudes.html'
-	
+def evaluarSolicitudPendiente(request):
+	solicitudes = Solicitud.objects.filter(usuario_id = request.user.id)
+
+	for solicitud in solicitudes:
+		if solicitud.estado == 1 or solicitud.estado == 2:
+			return render(request,'Autotest/inc_final.html')
+	return redirect('Autotest:crear')
+
+
+
 def ListarSolicitudes(request): 
 	context = {}
 	todos = Solicitud.objects.all()
 	context['solicitudes'] = todos
-
+	
 	return render(request,'Autotest/listarsolicitudes.html',context)
 
 def CargaResultados(request): 
 	context = {}
-	todos = Solicitud.objects.all()
-	context['solicitudes'] = todos
+	unId = request.GET.get('filtro',None)
+	if unId:
+		resultado = Solicitud.objects.filter(id = unId)
+		context['solicitudes'] = resultado
+	else:
+		todos = Solicitud.objects.all()
+		context['solicitudes'] = todos
 
 	return render(request,'Autotest/carga_resultados.html',context)
+	
 
 class Modificar(UpdateView):
 	model = Solicitud

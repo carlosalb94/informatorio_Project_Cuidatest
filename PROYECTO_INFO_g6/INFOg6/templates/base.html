@@ -36,21 +36,24 @@
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
 				  <span class="navbar-toggler-icon"></span>
 				</button>
-				<a class="navbar-brand" href="#footer">LOGO</a>
+				<a class="navbar-brand" href="#footer">
+					<img src="{% static 'images/logo.png' %}" width="180" height="65" alt="">
+				</a>
 			  
 					{% if user.is_authenticated %} 
 						{% if not user.is_staff and not user.is_superuser %} <!---verifica si el usuario es normal--->
 							<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 				 			 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-								<li class="nav-item">
+								<li class="nav-item mx-2">
 								  <a class="nav-link" href="{% url 'home' %}">Home</a>
 								</li>
-								<li class="nav-item">
-								  <a class="nav-link" href="{% url 'Autotest:crear' %}">Solicitar Examen Hisopado </a>
+								<li class="nav-item mx-2">
+								  <a class="nav-link" href="{% url 'Autotest:pendiente' %}">Solicitar Examen Hisopado </a>
 								</li>
+
 								<li class="nav-item mr-auto">
 									<div class="dropdown">
-										<a class="nav-link dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.username}}</a></a>
+										<a class="nav-link dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.username }} </a>
 										<div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
 											<a class="dropdown-item" href="{% url 'Autotest:listarSolicitudes' %}">Estado de Solicitud</a>
 											<a class="dropdown-item" href="{% url 'logout' %}">Salir </a>
@@ -84,7 +87,7 @@
 								  <a class="nav-link" href="{% url 'home' %}">Home</a>
 								</li>
 								<li class="nav-item">
-								  <a class="nav-link" href="{% url 'Autotest:crear' %}">Solicitar Examen Hisopado </a>
+								  <a class="nav-link" href="{% url 'Autotest:pendiente' %}">Solicitar Examen Hisopado </a>
 								</li>
 								<li class="nav-item">
 								  <a class="nav-link" href="{% url 'Autotest:resultados' %}">Cargar Resultados </a>
@@ -126,11 +129,11 @@
 			</div>
 	</header>
 	
-	<div class="main min-100 max-100">
-		{% block contenido %}
+	
+	{% block contenido %}
 
-		{% endblock %}
-	</div>
+	{% endblock %}
+
 	
 	<footer class="footer" id="footer">
 		<div class="container-lg container-sm">
