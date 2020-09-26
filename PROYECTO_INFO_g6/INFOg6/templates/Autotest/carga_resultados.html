@@ -8,10 +8,23 @@
         <div id="accordion">
           <!--FILTRO-->
             <form method="GET">
-              <input type="number" name="filtro">
-              <button type="submit">filtrar</button>
+              <input type="number" name="filtro1">
+              <button type="submit">filtrar por id de Solicitud</button>
+            </form>
+            <form method="GET">
+              <input type="number" name="filtro2">
+              <button type="submit">filtrar por dni</button>
             </form>
             <!--FIN FILTRO-->
+
+            {% if dni %}
+
+             <h1> FUNCIONA {{dni}}</h1>
+
+
+            {% endif%}
+
+
             {% for p in solicitudes %} 
               
                     <div class="card my-4">

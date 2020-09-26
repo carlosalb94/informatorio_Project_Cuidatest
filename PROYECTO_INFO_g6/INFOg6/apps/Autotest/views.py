@@ -67,14 +67,25 @@ def ListarSolicitudes(request):
 
 def CargaResultados(request): 
 	context = {}
-	unId = request.GET.get('filtro',None)
-	if unId:
-		resultado = Solicitud.objects.filter(id = unId)
-		context['solicitudes'] = resultado
-	else:
-		todos = Solicitud.objects.all()
-		context['solicitudes'] = todos
+	
+	unId = request.GET.get('filtro1',None)
+	unDni = request.GET.get('filtro2', None)
+	unEstado = request.GET.get('filtro3', None)
+	
+	solicitudes = Solicitud.objects.all()
 
+	# ACA SE CONSULTAN LOS CAMPOS QUE ME PERMITE FILTRAR LA ORM
+	if unId:
+
+		solicitudes = Solicitud.objects.filter(id = unId)
+	
+	elif unEstado:
+
+		solicitudes = Solicitud.objects.filter(estado = unEstado)
+		
+	#------------------------------------------------------------------
+	context['dni'] = unDni
+	context['solicitudes'] = solicitudes
 	return render(request,'Autotest/carga_resultados.html',context)
 	
 
