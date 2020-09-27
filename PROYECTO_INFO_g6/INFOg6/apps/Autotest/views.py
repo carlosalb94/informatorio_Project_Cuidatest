@@ -60,10 +60,12 @@ def evaluarSolicitudPendiente(request):
 
 def ListarSolicitudes(request): 
 	context = {}
-	todos = Solicitud.objects.all()
-	context['solicitudes'] = todos
-	
-	return render(request,'Autotest/listarsolicitudes.html',context)
+	todos = Solicitud.objects.filter(usuario_id=request.user.id)
+	if todos:
+		context['solicitudes'] = todos
+		return render(request,'Autotest/listarsolicitudes.html',context)
+
+	return render(request, 'Autotest/noHaySolicitudes.html',context)
 
 def CargaResultados(request): 
 	context = {}
