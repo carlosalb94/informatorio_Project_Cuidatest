@@ -29,6 +29,48 @@ def Informe(request):
     context['total_positivos'] = len(Solicitud.objects.filter(resultado=True))
     context['total_negativos'] = len(Solicitud.objects.filter(resultado=False))     
     
+    localidades = Localidad.objects.all()
+    context['localidades'] = localidades
+    
+    localidad = request.GET.get("filtro", None)  #retorna el id en string en un queryset
+    NombreLocalidad = Localidad.objects.filter(id = localidad)
+    context['NombreLocalidad'] =  NombreLocalidad[0]
+
+
+    if localidad:
+    
+        usuarios = Usuario.objects.filter(localidad= localidad[0])
+        resultado1 = []
+        resultado2 = []
+
+        for u in usuarios:
+
+            re1 = Solicitud.objects.filter(usuario = u)
+            re2 = Autotest.objects.filter(usuario = u)
+
+            resultado1.append(re1[0])
+            resultado2.append(re2[0])
+
+        context['solicitudXlocalidad'] = resultado1
+        context['autotestXlocalidad'] = resultado2
+
+        cant_positivos = 0
+        cant_negativos = 0
+
+        for s in resultado1: 
+
+            if s.resultado == True:
+
+                cant_positivos +=1
+            
+            elif s.resultado == False:
+
+                cant_negativos +=1 
+
+        context['cant_negativosXlocalidad'] = cant_negativos
+        context['cant_positivosXlocalidad'] = cant_positivos
+        context['TotalLocalidadesFiltrado'] = len(resultado1)
+        
     return render(request, 'informe/informeTemplate.html', context)
 
 
@@ -51,9 +93,6 @@ def ListarXLocalidad(request):
 
 
     localidad = request.GET.get("filtro", None)  #retorna el id en string en un queryset
-
-    print(localidad[0])
-
     usuarios = Usuario.objects.filter(localidad= localidad[0])
 
     resultado1 = []

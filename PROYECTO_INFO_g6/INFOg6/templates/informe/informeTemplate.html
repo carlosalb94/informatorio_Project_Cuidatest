@@ -2,26 +2,28 @@
 
 {% block contenido %}
 
-		<div class='container'>  
+		<div class='container-lg py-5'>  
 
-			<div class='row min-vh-100' > 
-
-				<div class='col-lg-12 my-5 py-5'>
-					
-					<h1> Total de Personas que reporto sintomas de: </h1>
-
-					<h2>      Tos seca: {{ tosSeca }} Personas</h2>
-
-					<h2>      Fiebre: {{ fiebre }} Personas</h1>
-
-					<h2>      Dolor de Garganta: {{ dolordeGarganta }} Personas</h2>
-
-					<h2>      Dolor y/o malestar corporal: {{ dolorCorporal }} Personas </h1>
-
+			<div class='row min-vh-100 p-5' > 
+				<form method="GET">
+					<input type="number" name="filtro">
+					<button type="select">Filtrar por Localidad</button>
+				</form>
+				{% if solicitudXlocalidad %}
+						<div class='col-lg-12 my-5 py-5 border bg-light'>
+							<h1>Localidad:{{NombreLocalidad}}</h1>
+							<h1> Total del Hisopados: {{ TotalLocalidadesFiltrado }}</h1>
+							<h2> Positivos: {{ cant_positivosXlocalidad }} Personas</h2>
+							<h2> Negativos: {{ cant_negativosXlocalidad }} Personas</h2>
+						</div>
+				{%else%}
+				<div class='col-lg-12 my-5 py-5 border bg-light'>
+					<h1> Total del Autotest: {{ total_autotest }}</h1>
+					<h1> Total del Hisopados: {{ total_solicitud }}</h1>
+					<h2> Positivos: {{ total_positivos }} Personas</h2>
+					<h2> Negativos: {{ total_negativos }} Personas</h2>
 				</div>
-
-				
-
+				{%endif%}
 			</div>
 
 		</div>

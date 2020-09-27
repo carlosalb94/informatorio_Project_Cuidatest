@@ -144,7 +144,7 @@ def generadorUsuarios():
 
 # Ejecucion------------------------------------------------------
 
-RUTA= "C:/Users/Gonzalo/Desktop/Usuarios_Script.txt"  # Ruta de creacion del Script
+RUTA= "/home/Documents/Informatorio/script-info.txt"  # Ruta de creacion del Script
 
 file = open(RUTA, "w")
 
