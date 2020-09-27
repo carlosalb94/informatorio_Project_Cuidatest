@@ -29,10 +29,7 @@ def Informe(request):
     context['total_positivos'] = len(Solicitud.objects.filter(resultado=True))
     context['total_negativos'] = len(Solicitud.objects.filter(resultado=False))     
     
-    return render(request, 'informe/informe.html', context)
-
-    
-
+    return render(request, 'informe/informeTemplate.html', context)
 
 
 

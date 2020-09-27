@@ -108,14 +108,6 @@ def generadorAutotestsSolicitudes(idusuario):
 		generadorSolicitud(idusuario)
 
 
-
-
-def admin():
-
-	linea = "INSERT INTO users_usuario (email,telefono,domicilio,dni,first_name,last_name,localidad_id,password,is_superuser,username,is_staff,is_active,date_joined,fecha_nac) VALUES ('admin@admin',15231546, 'direc1234', 44444444, 'admin', 'admin', 1, 'Espada1234', 1, 'admin', 1, 1, '05-05-2020', '05-05-2020' )"
-	file.write(linea+os.linesep)
-
-
 def generadorUsuarios():
 
 	
@@ -141,23 +133,24 @@ def generadorUsuarios():
 		dateb = "'"+str(randint(1,12))+"/"+str(randint(1,28))+"/"+str(randint(1935,2010))+"'"
 		num_id +=1
 		values = '('+email+','+telefono+','+domicilio+','+dni+','+nom+','+ape+','+id_localidad+','+pas+','+superuser+','+username+','+staff+','+active+','+datej+','+dateb+')'
-		linea = "INSERT INTO users_usuario (email,telefono,domicilio,dni,first_name,last_name,id_localidad_id,password,is_superuser,username,is_staff,is_active,date_joined,fecha_nac) VALUES"+values
+		linea = "INSERT INTO users_usuario (email,telefono,domicilio,dni,first_name,last_name,localidad_id,password,is_superuser,username,is_staff,is_active,date_joined,fecha_nac) VALUES"+values
 		print(linea+"\n")
 		file.write(linea+os.linesep)
 
 		generadorAutotestsSolicitudes(str(num_id))
 
-	admin()
+	
 
 
 # Ejecucion------------------------------------------------------
 
+RUTA= "C:/Users/Gonzalo/Desktop/Usuarios_Script.txt"  # Ruta de creacion del Script
 
-file = open("C:/Users/Gonzalo/Desktop/Usuarios_Script.txt", "w")
+file = open(RUTA, "w")
 
 
 generadorLocalidades()
 generadorUsuarios()
-admin()
+
 
 file.close()
