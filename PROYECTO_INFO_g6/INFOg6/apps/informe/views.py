@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 from apps.Autotest.models import Autotest, Solicitud
 from apps.users.models import Localidad, Usuario
-from apps.informe.models import Informe
+
 
 
 

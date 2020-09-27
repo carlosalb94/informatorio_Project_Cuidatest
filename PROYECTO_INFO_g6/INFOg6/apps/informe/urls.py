@@ -9,5 +9,4 @@ urlpatterns = [
 	path('listarAutotest/', views.ListarAutotest, name = "listarAutotest"),
 	path('listarXLocalidad/', views.ListarXLocalidad, name = "listarXLocalidad"),
 	path('Informes/', views.Informe, name = 'informe'), 
-
 ]
