@@ -10,23 +10,8 @@
 					<h2 class="text-center">Editar Solicitud</h2>	
 					{{form.errors}}
 					<form method="POST">{% csrf_token %}
-						{% if form.estado.value == 1 %}
-								<div class="col-lg-12 my-3">
-									{{form.estado | as_crispy_field}}
-								</div>
-								<div class="col-lg-12 mb-3 mx-0">
-									<label for="{{form.fecha_hisopado.label}}">Fecha de hisopado</label>
-									<div class="input-group form-group date" id="datetimepicker1" data-target-input="nearest">
-										{{ form.fecha_hisopado }}
-										<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-											<div class="input-group-text"><i class="fa fa-calendar"></i></div>
-										</div>
-									</div>
-								</div>
-						{% else  %}
-							<div class="col-lg-12 my-3">
-								{{form.estado | as_crispy_field}}
-							</div>
+					
+						
 							<div class="col-lg-12 mb-3 mx-0">
 								<label for="{{form.fecha_hisopado.label}}">Fecha de hisopado</label>
 								<div class="input-group form-group date" id="datetimepicker1" data-target-input="nearest">
@@ -39,7 +24,7 @@
 							<div class="col-lg-12 my-3">
 								{{form.resultado | as_crispy_field}}
 							</div>
-						{%endif%}
+						
 						<input class="btn btn-primary" type="submit" value="Guardar">
 					</form>
 

@@ -100,5 +100,15 @@ class Modificar(UpdateView):
 	template_name = 'Autotest/modificar.html'
 	success_url = reverse_lazy('Autotest:resultados')
 
+	def form_valid(self, form):
+		unaSolicitud = form.save(commit = False)
+		if unaSolicitud.fecha_hisopado:
+			unaSolicitud.estado= 2
+		if unaSolicitud.resultado:
+			unaSolicitud.estado=3
+		unaSolicitud.save()
+
+		return redirect(self.success_url)
+
 
 # COMO TRANSEFIR EL ID_AUTOTEST AL MOMENTO DE DAR DE ALTA UNA SOLICITUD

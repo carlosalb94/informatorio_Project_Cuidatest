@@ -23,6 +23,6 @@ class CargaResultadosForm(forms.ModelForm):
 
 	class Meta:
 		model = Solicitud
-		fields = ['estado','resultado','fecha_hisopado']
+		fields = ['resultado','fecha_hisopado']
 
 
