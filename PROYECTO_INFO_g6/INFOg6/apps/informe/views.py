@@ -33,13 +33,12 @@ def Informe(request):
     context['localidades'] = localidades
     
     localidad = request.GET.get("filtro", None)  #retorna el id en string en un queryset
-    NombreLocalidad = Localidad.objects.filter(id = localidad)
-    context['NombreLocalidad'] =  NombreLocalidad[0]
-
-
-    if localidad:
     
+    if localidad:
+        
+        NombreLocalidad = Localidad.objects.filter(id = localidad)
         usuarios = Usuario.objects.filter(localidad= localidad[0])
+        context['NombreLocalidad'] =  NombreLocalidad[0]
         resultado1 = []
         resultado2 = []
 
