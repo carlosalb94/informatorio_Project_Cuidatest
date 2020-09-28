@@ -3,11 +3,9 @@ from django.views.generic import CreateView
 from django.views.generic.edit import UpdateView
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
-
+from apps.users.models import Usuario
 from .forms import AltaAutotest, AltaSolicitud,CargaResultadosForm
 from .models import Autotest, Solicitud
-
-
 # VISTA BASADA EN FUNCIONES
 
 
@@ -60,37 +58,42 @@ def evaluarSolicitudPendiente(request):
 
 def ListarSolicitudes(request): 
 	context = {}
-	todos = Solicitud.objects.filter(usuario_id=request.user.id)
-	if todos:
-		context['solicitudes'] = todos
-		return render(request,'Autotest/listarsolicitudes.html',context)
-
-	return render(request, 'Autotest/noHaySolicitudes.html',context)
+	todos = Solicitud.objects.all()
+	context['solicitudes'] = todos
+	
+	return render(request,'Autotest/listarsolicitudes.html',context)
 
 def CargaResultados(request): 
 	context = {}
 	
 	unId = request.GET.get('filtro1',None)
 	unDni = request.GET.get('filtro2', None)
-	unEstado = request.GET.get('filtro3', None)
-	
 	solicitudes = Solicitud.objects.all()
-
 	# ACA SE CONSULTAN LOS CAMPOS QUE ME PERMITE FILTRAR LA ORM
 	if unId:
 
 		solicitudes = Solicitud.objects.filter(id = unId)
 	
-	elif unEstado:
+	elif unDni:
+		try:
+			usuario = Usuario.objects.get(dni = unDni)
+		except:
+			usuario = None
+			
+		if usuario:
+			id_usuario = usuario.id
+			solicitudes = Solicitud.objects.filter(usuario_id = id_usuario)
+		else:
+			solicitudes = None
 
-		solicitudes = Solicitud.objects.filter(estado = unEstado)
-		
 	#------------------------------------------------------------------
 	context['dni'] = unDni
 	context['solicitudes'] = solicitudes
 	return render(request,'Autotest/carga_resultados.html',context)
 	
 
+
+		
 class Modificar(UpdateView):
 	model = Solicitud
 	form_class = CargaResultadosForm

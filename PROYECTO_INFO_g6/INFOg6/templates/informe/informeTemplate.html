@@ -2,83 +2,80 @@
 
 {% block contenido %}
 
-		<div class='container-lg py-5'>  
-
+		<div class='container-lg py-5 my-5'>  
 			<div class='row min-vh-100 p-5' > 
-				<form method="GET">
+				<form class="form-row input-group mb-3" method="GET">
 					<select name="filtro"> 
 
 						{% for loc in localidades %}
-
 							<option> 
 								{{loc.nombre}}
 							</option>
 						{% endfor %}
 
 					</select>
-
-					<button type="submit"> elegir localidad</button>
-				</form>
-				{% if solicitudXlocalidad %}
-
-				<section class="casos">
-					<div class="container-lg container-sm-4">
-						<blockquote class="blockquote">
-			  				<h3 class="text-center">{{NombreLocalidad}}</h3>
-						</blockquote>
-						<div class="row justify-content-center">
-							<div class="col-lg-6">
-								<div class="card text-center mb-5" >
-									<div class="card-body">
-										<h5 class="text-center">se realizaron {{ TotalSolicitudesLocalidadesFiltrado }} hisopados.</h5>
-										<h3 class='text-center'> . </h3>
-									  <h4 class="text-left"> <b>{{porcentajePositivoXlocalidad}} % positivos </b> </p>
-									  <h5 class='text-left mx-4'> {{ cant_positivosXlocalidad }} personas. </h5>
-									  <h4 class="text-left"><b>{{porcentajeNegativoXlocalidad}} % negativos </b></h4>
-									  <h5 class='text-left mx-4'> {{ cant_negativosXlocalidad }} personas. </h5> 
-									</div>
-								  </div>
-							</div>
-							<div class="col-lg-6 ">
-								<div class="card text-center mb-5 " style='width: 500px' >
-									<div class="card-body" >
-										<h5 class="text-center">% de sintomas de los Cuidatest registrados:</h5>
-										<h3 class='text-center'> . </h3>
-										<h6 class="text-left">{{total_tosSecaXlocalidad}} % reportó tener <b>tos seca o tos frecuente.</b></h5>
-										<h6 class="text-left">{{total_fiebreXlocalidad}} % reportó tener <b>fiebre temperatura +37.5.</b></h5>
-										<h6 class="text-left">{{total_dolordeGargantaXlocalidad }} % reportó tener <b>dolor de garganta.</b> </h5>
-										<h6 class="text-left">{{total_dolorCorporalXlocalidad }} % reportó tener <b>dolores corporales frecuentes.</b> </h5>
-										<h6 class="text-left">{{total_contactoConPositivoXlocalidad }} % reportó tener <b>contacto positivo.</b> </h5>
-										<h6 class="text-left">{{total_dolorCabezaXlocalidad }} % reportó tener <b>dolor de cabeza.</b> </h5>
-										<h6 class="text-left">{{total_dificultadRespiratoriaXlocalidad }} % reportó tener <b>dificultad al respirar.</b> </h5>
-										<h6 class="text-left">{{total_alteracionGustoOfaltoXlocalidad }} % reportó <b>alterados sentidos del olfato y/o gusto.</b> </h5>
-										<h6 class="text-left">{{total_mucosidadXlocalidad }} % reportó tener <b>mucosidad nasal.</b> </h5>
-										<h6 class="text-left">{{total_enfermedadXlocalidad }} % reportó padecer alguna <b>enfermedad preexistente.</b> </h5>
-										<h6 class="text-left">{{total_vomitosXlocalidad }} % reportó sentir <b>nauseas o vómitos.</b> </h5>
-										<h6 class="text-left">{{total_diarreaXlocalidad }} % reportó sentir <b>diarrea.</b> </h5>
-									  </div>
-								  </div>
-							</div>
-						</div>
-						
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="submit" id="button-addon2">Filtrar por localidad</button>
 					</div>
-				</section>	
-
-							
-
+				</form>
+				
+				<section class="casos container-lg">
+					<div class="container-lg container-sm-4">
+						{% if solicitudXlocalidad %}
+							<blockquote class="blockquote">
+								<h3 class="text-center">{{NombreLocalidad}}</h3>
+							</blockquote>
+							<div class="row justify-content-center">
+								<div class="col-lg-6 mr-auto">
+									<div class="card text-center mb-5" >
+										<div class="card-body">
+											<h5 class="text-center">se realizaron {{ TotalSolicitudesLocalidadesFiltrado }} hisopados.</h5>
+											<br>
+										<h4 class="text-left"> <b>{{porcentajePositivoXlocalidad}} % positivos </b> </p>
+										<h5 class='text-left mx-4'> {{ cant_positivosXlocalidad }} personas. </h5>
+										<h4 class="text-left"><b>{{porcentajeNegativoXlocalidad}} % negativos </b></h4>
+										<h5 class='text-left mx-4'> {{ cant_negativosXlocalidad }} personas. </h5> 
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 ml-auto">
+									<div class="card text-center mb-5 " style='width: 500px' >
+										<div class="card-body" >
+											<h5 class="text-center">Porcentaje de sintomas de los Cuidatest registrados:</h5>
+											<br>
+											<h6 class="text-left">{{total_tosSecaXlocalidad}} % reportó tener <b>tos seca o tos frecuente.</b></h5>
+											<h6 class="text-left">{{total_fiebreXlocalidad}} % reportó tener <b>fiebre temperatura +37.5.</b></h5>
+											<h6 class="text-left">{{total_dolordeGargantaXlocalidad }} % reportó tener <b>dolor de garganta.</b> </h5>
+											<h6 class="text-left">{{total_dolorCorporalXlocalidad }} % reportó tener <b>dolores corporales frecuentes.</b> </h5>
+											<h6 class="text-left">{{total_contactoConPositivoXlocalidad }} % reportó tener <b>contacto positivo.</b> </h5>
+											<h6 class="text-left">{{total_dolorCabezaXlocalidad }} % reportó tener <b>dolor de cabeza.</b> </h5>
+											<h6 class="text-left">{{total_dificultadRespiratoriaXlocalidad }} % reportó tener <b>dificultad al respirar.</b> </h5>
+											<h6 class="text-left">{{total_alteracionGustoOfaltoXlocalidad }} % reportó <b>alterados sentidos del olfato y/o gusto.</b> </h5>
+											<h6 class="text-left">{{total_mucosidadXlocalidad }} % reportó tener <b>mucosidad nasal.</b> </h5>
+											<h6 class="text-left">{{total_enfermedadXlocalidad }} % reportó padecer alguna <b>enfermedad preexistente.</b> </h5>
+											<h6 class="text-left">{{total_vomitosXlocalidad }} % reportó sentir <b>nauseas o vómitos.</b> </h5>
+											<h6 class="text-left">{{total_diarreaXlocalidad }} % reportó sentir <b>diarrea.</b> </h5>
+										</div>
+									</div>
+								</div>
+							</div>	
+						{%else%}
+							<div class="row justify-content-center">
+								<div class='col-lg-12 my-5 py-5 border bg-light'>
+									<h3 class='text-center'>PROVINCIA DEL CHACO</h1>
+									<br>
+									<h2 class='text-center'> Examenes covid-19 realizados: {{ total_solicitud }}</h2>
+									<br>
+									<h4 class="text-center"> <b>{{porcentajeTotalPositivos}}% positivos </b> </p>
+									<h5 class="text-center">{{ total_positivos }} personas. </h5>
+									<h4 class="text-center"><b>{{porcentajeTotalNegativos}}% negativos </b></h4>
+									<h5 class='text-center'> {{ total_negativos }} personas. </h5>
+								</div>	  
+							</div>
+						{%endif%}
 						</div>
-				{%else%}
-				<div class='col-lg-12 my-5 py-5 border bg-light'>
-					<h3 class='text-center'>       PROVINCIA DEL CHACO</h1>
-					<h3 class='text-center'> . </h3>
-					<h2 class='text-center'> Examenes covid-19 realizados: {{ total_solicitud }}</h2>
-					<h3 class='text-center'> .          .</h3>
-					<h4 class="text-center"> <b>{{porcentajeTotalPositivos}} % positivos </b> </p>
-					<h5 class='text-center '> {{ total_positivos }} personas. </h5>
-					  <h4 class="text-center"><b>{{porcentajeTotalNegativos}} % negativos </b></h4>
-					  <h5 class='text-center'> {{ total_negativos }} personas. </h5>
-					   
-				{%endif%}
+					</section>	
+
 			</div>
 
 		</div>
