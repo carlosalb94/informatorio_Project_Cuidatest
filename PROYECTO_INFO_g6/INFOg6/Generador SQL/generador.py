@@ -5,7 +5,7 @@ import os
 #---------------------------------------------------
 # CONSTANTES GLOBALES
 
-CANTIDAD_USERS = 500      
+CANTIDAD_USERS = 3000    
 
 
 
@@ -144,7 +144,7 @@ def generadorUsuarios():
 
 # Ejecucion------------------------------------------------------
 
-RUTA= "/home/Documents/Informatorio/script-info.txt"  # Ruta de creacion del Script
+RUTA= "C:/Users/Gonzalo/Desktop/script-info.txt"  # Ruta de creacion del Script
 
 file = open(RUTA, "w")
 

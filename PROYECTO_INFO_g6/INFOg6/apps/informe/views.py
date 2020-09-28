@@ -12,23 +12,31 @@ from apps.users.models import Localidad, Usuario
 def Informe(request):
 
     context={}
-    context['total_autotest'] = len(Autotest.objects.all())
-    context['total_solicitud'] = len(Solicitud.objects.all())
-    context['tosSeca'] = len(Autotest.objects.filter(tosSeca=True))
-    context['fiebre'] = len(Autotest.objects.filter(fiebre=True))
-    context['dolordeGarganta'] = len(Autotest.objects.filter(dolordeGarganta=True))
-    context['dolorCorporal'] = len(Autotest.objects.filter(dolorCorporal=True))
-    context['contactoConPositivo'] = len(Autotest.objects.filter(contactoConPositivo=True))
-    context['dolorCabeza'] = len(Autotest.objects.filter(dolorCabeza=True))
-    context['dificultadRespiratoria'] = len(Autotest.objects.filter(dificultadRespiratoria=True))
-    context['alteracionGustoOfalto'] =len(Autotest.objects.filter(alteracionGustoOfalto=True))
-    context['mucosidad'] = len(Autotest.objects.filter(mucosidad=True))
-    context['enfermedad'] = len(Autotest.objects.filter(enfermedad=True))
-    context['vomitos'] = len(Autotest.objects.filter(vomitos=True))
-    context['diarrea'] = len(Autotest.objects.filter(tosSeca=True))
-    context['total_positivos'] = len(Solicitud.objects.filter(resultado=True))
-    context['total_negativos'] = len(Solicitud.objects.filter(resultado=False))     
+    context['total_autotest'] = Autotest.objects.count()
+    total_solicitud = Solicitud.objects.count()
+    context['total_solicitud'] = total_solicitud
+    context['tosSeca'] = Autotest.objects.filter(tosSeca=True).count()
+    context['fiebre'] = Autotest.objects.filter(fiebre=True).count()
+    context['dolordeGarganta'] = Autotest.objects.filter(dolordeGarganta=True).count()
+    context['dolorCorporal'] = Autotest.objects.filter(dolorCorporal=True).count()
+    context['contactoConPositivo'] = Autotest.objects.filter(contactoConPositivo=True).count()
+    context['dolorCabeza'] = Autotest.objects.filter(dolorCabeza=True).count()
+    context['dificultadRespiratoria'] = Autotest.objects.filter(dificultadRespiratoria=True).count()
+    context['alteracionGustoOfalto'] =Autotest.objects.filter(alteracionGustoOfalto=True).count()
+    context['mucosidad'] = Autotest.objects.filter(mucosidad=True).count()
+    context['enfermedad'] = Autotest.objects.filter(enfermedad=True).count()
+    context['vomitos'] = Autotest.objects.filter(vomitos=True).count()
+    context['diarrea'] = Autotest.objects.filter(tosSeca=True).count()
+    total_positivos = Solicitud.objects.filter(resultado=True).count()
+    context['total_positivos'] = total_positivos
+    total_negativos = Solicitud.objects.filter(resultado=False).count()
+    context['total_negativos'] = total_negativos
+ 
     
+
+    context['porcentajeTotalPositivos'] = round((total_positivos/total_solicitud)*100)    
+    context['porcentajeTotalNegativos'] = round((total_negativos/total_solicitud)*100)
+
     localidades = Localidad.objects.all()
     context['localidades'] = localidades
     
@@ -46,29 +54,93 @@ def Informe(request):
 
             re1 = Solicitud.objects.filter(usuario = u)
             re2 = Autotest.objects.filter(usuario = u)
-
             resultado1.append(re1[0])
             resultado2.append(re2[0])
 
         context['solicitudXlocalidad'] = resultado1
         context['autotestXlocalidad'] = resultado2
 
-        cant_positivos = 0
-        cant_negativos = 0
+
+        # TOTALIZADORES PARA POSITIVOS Y NEGATIVOS FILTRADO LOCALIDAD
+        cant_positivosXlocalidad = 0
+        cant_negativosXlocalidad = 0
 
         for s in resultado1: 
 
             if s.resultado == True:
 
-                cant_positivos +=1
+                cant_positivosXlocalidad +=1
             
             elif s.resultado == False:
 
-                cant_negativos +=1 
+                cant_negativosXlocalidad +=1 
 
-        context['cant_negativosXlocalidad'] = cant_negativos
-        context['cant_positivosXlocalidad'] = cant_positivos
-        context['TotalLocalidadesFiltrado'] = len(resultado1)
+        # TOTALIZADORES PARA SINTOMAS FILTRADOS X LOCALIDAD
+        total_tosSecaXlocalidad = 0
+        total_fiebreXlocalidad = 0
+        total_dolordeGargantaXlocalidad = 0
+        total_dolorCorporalXlocalidad = 0
+        total_contactoConPositivoXlocalidad = 0
+        total_dolorCabezaXlocalidad = 0
+        total_dificultadRespiratoriaXlocalidad = 0
+        total_alteracionGustoOfaltoXlocalidad = 0
+        total_mucosidadXlocalidad = 0
+        total_enfermedadXlocalidad = 0
+        total_vomitosXlocalidad = 0
+        total_diarreaXlocalidad = 0
+
+
+        for r in resultado2:
+
+            if r.tosSeca:
+                total_tosSecaXlocalidad +=1  
+            if r.fiebre:
+                total_fiebreXlocalidad +=1
+            if r.dolordeGarganta:
+                total_dolordeGargantaXlocalidad +=1
+            if r.dolorCorporal:
+                total_dolorCorporalXlocalidad +=1
+            if r.contactoConPositivo:
+                total_contactoConPositivoXlocalidad +=1
+            if r.dolorCabeza:
+                total_dolorCabezaXlocalidad +=1
+            if r.dificultadRespiratoria:
+                total_dificultadRespiratoriaXlocalidad +=1
+            if r.alteracionGustoOfalto:
+                total_alteracionGustoOfaltoXlocalidad +=1
+            if r.mucosidad:
+                total_mucosidadXlocalidad +=1
+            if r.enfermedad:
+                total_enfermedadXlocalidad +=1
+            if r.vomitos:
+                total_vomitosXlocalidad +=1
+            if r.diarrea:
+                total_diarreaXlocalidad +=1
+
+        context['total_tosSecaXlocalidad'] = round((total_tosSecaXlocalidad/(cant_positivosXlocalidad+cant_negativosXlocalidad))*100)
+        context['total_fiebreXlocalidad'] = round((total_fiebreXlocalidad/(cant_positivosXlocalidad+cant_negativosXlocalidad))*100)
+        context['total_dolordeGargantaXlocalidad'] = round((total_dolordeGargantaXlocalidad/(cant_positivosXlocalidad+cant_negativosXlocalidad))*100)
+        context['total_dolorCorporalXlocalidad'] = round((total_dolorCorporalXlocalidad/(cant_positivosXlocalidad+cant_negativosXlocalidad))*100)
+        context['total_contactoConPositivoXlocalidad'] = round((total_contactoConPositivoXlocalidad/(cant_positivosXlocalidad+cant_negativosXlocalidad))*100)
+        context['total_dolorCabezaXlocalidad'] = round((total_dolorCabezaXlocalidad/(cant_positivosXlocalidad+cant_negativosXlocalidad))*100)
+        context['total_dificultadRespiratoriaXlocalidad'] = round((total_dificultadRespiratoriaXlocalidad/(cant_positivosXlocalidad+cant_negativosXlocalidad))*100)
+        context['total_alteracionGustoOfaltoXlocalidad'] = round((total_alteracionGustoOfaltoXlocalidad/(cant_positivosXlocalidad+cant_negativosXlocalidad))*100)
+        context['total_mucosidadXlocalidad'] = round((total_mucosidadXlocalidad/(cant_positivosXlocalidad+cant_negativosXlocalidad))*100)
+        context['total_enfermedadXlocalidad'] = round((total_enfermedadXlocalidad/(cant_positivosXlocalidad+cant_negativosXlocalidad))*100)
+        context['total_vomitosXlocalidad'] = round((total_vomitosXlocalidad/(cant_positivosXlocalidad+cant_negativosXlocalidad))*100)
+        context['total_diarreaXlocalidad'] = round((total_diarreaXlocalidad/(cant_positivosXlocalidad+cant_negativosXlocalidad))*100)
+
+
+        
+
+        context['cant_negativosXlocalidad'] = cant_negativosXlocalidad
+        context['cant_positivosXlocalidad'] = cant_positivosXlocalidad
+        context['TotalSolicitudesLocalidadesFiltrado'] = len(resultado1)
+        context['TotalAutotestsLocalidadesFiltrado'] = len(resultado2)
+
+
+        context['porcentajePositivoXlocalidad'] = round((cant_positivosXlocalidad / len(resultado1))*100)
+        context['porcentajeNegativoXlocalidad'] = round((cant_negativosXlocalidad / len(resultado1))*100)
         
     return render(request, 'informe/informeTemplate.html', context)
 
