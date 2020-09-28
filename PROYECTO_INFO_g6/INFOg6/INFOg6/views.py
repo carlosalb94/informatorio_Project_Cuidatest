@@ -6,3 +6,5 @@ def Home(request):
 def Registro(request):
 	return render(request, 'registro.html')
 
+
+

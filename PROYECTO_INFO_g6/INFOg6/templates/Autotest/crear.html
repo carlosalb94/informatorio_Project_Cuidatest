@@ -10,61 +10,169 @@
 		<div class="container-lg">
 			<div class="row py-5 my-5">
 				<div class="col-lg-12">
-					<h1>Autoevaluacion Covid-19</h1>
-					<p>Indique si posee algunos de los siguientes sintomas</p>
+					<h1 style="color: #48537d;text-align: center" class=" ">Autotest COVID 19</h1>
+					<br>
+					<div class = "alert alert-info">
+						<strong>¡ATENCION!</strong>Los datos que usted va a completar tienen carácter de declaración jurada, dado que sus respuestas podrán desencadenar toda una serie de acciones por parte del equipo del Sistema Integrado de Salud con el propósito de brindarle rápida atención en el caso de ser necesario.<br>
+							Por ello y atentos a su tranquilidad, tenga la confianza de que los datos ingresados seran almacenados y verificados para dicho propósito.<br>
+							CUIDATEST le garantiza que toda la información que Usted brinde aquí será considerada como dato sensible, manteniéndose bajo secreto médico profesional<a href="#" class="close" data-dismiss="alert" aria-label="close">X</a>
+
+					</div>
+
+					<br>
+					<h6 style="color:#48537d;text-align:center">Por favor, marque si posee (o ha presentado en las últimas 24 horas) algunos de los siguientes síntomas:</h6>
 					{{form.errors}}
 					<form class="form-group border rounded bg-light my-4 py-4" method="POST">{% csrf_token %}
 						<div class="col-lg-12">
-							<label for="{{form.tosSeca.label}}">Tos</label>
-							<input type="checkbox" name="tosSeca" id="id_tosSeca">
+							<div class="row mx-md-n5">
+								<div class="col-10 px-md-5 ml-3">
+									<label for="{{form.tosSeca.label}}"style="color: #0F4C75;font-size: x-large">¿Usted tiene tos seca?</label>
+								</div>
+								<div class="col align-self-center px-md-5 mr-2">
+									<input type="checkbox" name="tosSeca" id="id_tosSeca">
+								</div>
+							</div>
+						<hr>
 						</div>
 						<div class="col-lg-12">
-							<label for="{{form.fiebre.label}}">Fiebre mayor a 37.5</label>
-							<input type="checkbox" name="fiebre" id="id_fiebre">
+							<div class="row mx-md-n5">
+								<div class="col-10 px-md-5 ml-3">
+									<label for="{{form.fiebre.label}}"style="color: #0F4C75;font-size: x-large">¿Usted presenta Fiebre mayor a 37.5?</label>
+								</div>
+								<div class="col align-self-center px-md-5 mr-2">
+									<input type="checkbox" name="fiebre" id="id_fiebre">
+								</div>
+							</div>
+						<hr>
 						</div>
 						<div class="col-lg-12">
-							<label for="{{form.dolorCabeza.label}}">Dolor de cabeza</label>
-							<input type="checkbox" name="dolorCabeza" id="id_dolorCabeza">
+							<div class="row mx-md-n5">
+								<div class="col-10 px-md-5 ml-3">
+									<label for="{{form.dolorCabeza.label}}"style="color: #0F4C75;font-size: x-large">¿Tiene Dolor de cabeza?</label>
+								</div>
+								<div class="col align-self-center px-md-5 mr-2">
+									<input type="checkbox" name="dolorCabeza" id="id_dolorCabeza">
+								</div>
+							</div>
+						<hr>
 						</div>
 						<div class="col-lg-12">
-							<label for="{{form.dolorCorporal.label}}">Dolor  corporal</label>
-							<input type="checkbox" name="dolorCorporal" id="id_dolorCorporal">
+							<div class="row mx-md-n5">
+								<div class="col-10 px-md-5 ml-3">
+									<label for="{{form.dolorCorporal.label}}" style="color: #0F4C75;font-size: x-large">¿Usted presenta Dolor  corporal?</label>
+								</div>
+								<div class="col align-self-center px-md-5 mr-2">
+									<input type="checkbox" name="dolorCorporal" id="id_dolorCorporal">
+								</div>
+							</div>
+						<hr>	
 						</div>
 						<div class="col-lg-12">
-							<label for="{{form.dolordeGarganta.label}}">Dolor de garganta</label>
-							<input type="checkbox" name="dolordeGarganta" id="id_dolordeGarganta">						</div>
-						<div class="col-lg-12">
-							<label for="{{form.contactoConPositivo.label}}">Estuvo en contacto estrecho con un paciente Covid positivo</label>
-							<input type="checkbox" name="contactoConPositivo" id="id_contactoConPositivo">
+							<div class="row mx-md-n5">
+								<div class="col-10 px-md-5 ml-3">
+									<label for="{{form.dolordeGarganta.label}}" style="color: #0F4C75;font-size: x-large">¿Usted tiene Dolor de garganta?</label>
+								</div>
+								<div class="col align-self-center px-md-5 mr-2">
+									<input type="checkbox" name="dolordeGarganta" id="id_dolordeGarganta">
+								</div>
+							</div>
+						<hr>
 						</div>
 						<div class="col-lg-12">
-							<label for="{{form.dificultadRespiratoria.label}}">Dificultad respiratoria</label>
-							<input type="checkbox" name="dificultadRespiratoria" id="id_dificultadRespiratoria">
+							<div class="row mx-md-n5">
+								<div class="col-10 px-md-5 ml-3">
+									<label for="{{form.contactoConPositivo.label}}" style="color: #0F4C75;font-size: x-large">¿Usted estuvo en contacto estrecho con un paciente Covid positivo?</label>
+								</div>
+								<div class="col align-self-center px-md-5 mr-2">
+									<input type="checkbox" name="contactoConPositivo" id="id_contactoConPositivo">
+								</div>
+							</div>
+						<hr>
 						</div>
 						<div class="col-lg-12">
-							<label for="{{form.enfermedad.label}}">Posee enfermedades preexistentes</label>
-							<input type="checkbox" name="enfermedad" id="id_enfermedad">						</div>
-						<div class="col-lg-12">
-							<label for="{{form.mucosidad.label}}">Mucosidad</label>
-							<input type="checkbox" name="mucosidad" id="id_mucosidad">
+							<div class="row mx-md-n5">
+								<div class="col-10 px-md-5 ml-3">
+									<label for="{{form.dificultadRespiratoria.label}}" style="color: #0F4C75;font-size: x-large">¿Presenta Dificultad respiratoria?</label>
+								</div>
+								<div class="col  align-self-center px-md-5 mr-2">
+									<input type="checkbox" name="dificultadRespiratoria" id="id_dificultadRespiratoria">
+								</div>
+							</div>
+						<hr>	
 						</div>
 						<div class="col-lg-12">
-							<label for="{{form.vomitos.label}}">Vomitos</label>
-							<input type="checkbox" name="vomitos" id="id_vomitos">
+							<div class="row mx-md-n5">
+								<div class="col-10 px-md-5 ml-3">
+									<label for="{{form.enfermedad.label}}" style="color: #0F4C75;font-size: x-large">¿Usted posee enfermedades preexistentes?</label>
+								</div>
+								<div class="col align-self-center px-md-5 mr-2">
+									<input type="checkbox" name="enfermedad" id="id_enfermedad">
+								</div>
+							</div>
+						<hr>
 						</div>
 						<div class="col-lg-12">
-							<label for="{{form.diarrea.label}}">Diarrea</label>
-							<input type="checkbox" name="diarrea" id="id_diarrea">
+							<div class="row mx-md-n5">
+								<div class="col-10 px-md-5 ml-3">
+									<label for="{{form.mucosidad.label}}" style="color: #0F4C75;font-size: x-large">¿Tiene Mucosidad?</label>
+								</div>
+								<div class="col align-self-center px-md-5 mr-2">
+									<input type="checkbox" name="mucosidad" id="id_mucosidad">
+								</div>
+							</div>
+						<hr>
 						</div>
 						<div class="col-lg-12">
-							<label for="{{form.alteracionGustoOfalto.label}}">Alteraciones de gusto u olfato</label>
-							<input type="checkbox" name="alteracionGustoOfalto" id="id_alteracionGustoOfalto">
+							<div class="row mx-md-n5">
+								<div class="col-10 px-md-5 ml-3">
+									<label for="{{form.vomitos.label}}" style="color: #0F4C75;font-size: x-large">¿Usted tiene o ha tenido Náuseas ó Vómitos?</label>
+								</div>
+								<div class="col align-self-center px-md-5 mr-2">
+									<input type="checkbox" name="vomitos" id="id_vomitos">
+								</div>
+							</div>
+						<hr>
 						</div>
-
-						<div class="col-12">
+						<div class="col-lg-12">
+							<div class="row mx-md-n5">
+								<div class="col-10 px-md-5 ml-3">
+									<label for="{{form.diarrea.label}}" style="color: #0F4C75;font-size: x-large">¿Tiene Diarrea?</label>
+								</div>	
+								<div class="col align-self-center px-md-5 mr-2">
+								    <input type="checkbox" name="diarrea" id="id_diarrea">
+								</div>
+							</div>
+						<hr>
+						</div>
+						<div class="col-lg-12">
+							<div class="row mx-md-n5">
+								<div class="col-10 px-md-5 ml-3">
+									<label for="{{form.alteracionGustoOfalto.label}}" style="color: #0F4C75;font-size: x-large">¿Usted tiene o ha tenido Alteraciones de gusto u olfato?</label>
+								</div>
+									
+								<div class="col align-self-center px-md-5 mr-2">
+								    <input type="checkbox" name="alteracionGustoOfalto" id="id_alteracionGustoOfalto">
+								</div>
+							</div>
+						<hr>
+						</div>
+						<br>
+						<div class="col-lg-12 text-justify"style="color: #48537d">
 							<p></p>
-							<button class="btn btn-primary" type="submit" value="Enviar" name="">Ingresar</button>
+							  <div class="custom-control custom-checkbox mb-3">
+    							<input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
+    							<label class="custom-control-label" for="customControlValidation1" style="color: #e00f2c;text-align: left-font-weight">COMPRENDO QUE SI LOS DATOS NO SON CORRECTOS O NO SE COMPLETA TODA LA INFORMACIÓN SOLICITADA, LA RESPUESTA NO SERÁ ADECUADA QUEDANDO BAJO MI EXCLUSIVA RESPONSABILIDAD.</label>
+    							<div class="invalid-feedback">Es necesario que comprenda esto</div>
+  							  </div>
+
+						<div class="text-center">
+							<p>	</p>
+							<button type="submit" class="btn btn-primary text-align">ENVIAR</button>
+							
 						</div>
+						
+
+
 					</form>
 				</div>
 			</div>
