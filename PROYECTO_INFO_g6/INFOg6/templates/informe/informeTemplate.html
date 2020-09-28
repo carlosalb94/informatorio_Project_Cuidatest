@@ -6,8 +6,18 @@
 
 			<div class='row min-vh-100 p-5' > 
 				<form method="GET">
-					<input type="number" name="filtro">
-					<button type="select">filtrar por localidad</button>
+					<select name="filtro"> 
+
+						{% for loc in localidades %}
+
+							<option> 
+								{{loc.nombre}}
+							</option>
+						{% endfor %}
+
+					</select>
+
+					<button type="submit"> elegir localidad</button>
 				</form>
 				{% if solicitudXlocalidad %}
 
