@@ -7,11 +7,13 @@
 	<div class="container-lg">
 		<div class="form-row justify-content-center">
 			<div class="form-group border rounded bg-light p-3 mt-5">
-				<div class="col-lg-4 mx-auto">
+				<div class="col-lg-4 d-flex justify-content-around mx-auto">
 					<img src="{% static 'images/user.svg' %}" width="50" height="50" alt="">
 				</div>
 				<h2 class="text-center my-3">Ingresar</h2>
-				{{ form.errors }}
+				{%if form.errors %}
+					<p class="text-justify text-danger">Por favor introduzca un nombre de usuario y una contraseña correctos</p>					
+				{%endif%}
 				<form method="POST">{% csrf_token %}
 					<div class="col-12">
 						{{ form.username|as_crispy_field }}
@@ -19,9 +21,9 @@
 					<div class="col-12 form-group">
 						{{ form.password|as_crispy_field }}
 					</div>
-					<p>Si no tenés una cuenta <a class="link-item" href="{% url 'users:registro' %}">Registrate</a></p>
-					<p>¿olvidaste la contraseña? <a class="link-item" href="{% url 'reset_password' %}">Recuperala aquí</a></p>
-					<div class="col-6 m-auto">
+					<p class="text-justify">Si no tenés una cuenta <a class="link-item" href="{% url 'users:registro' %}"> Registrate</a></p>
+					<p class="text-justify">¿Olvidaste la contraseña? <a class="link-item" href="{% url 'reset_password' %}"> Recuperala aquí</a></p>
+					<div class="col-6 d-flex justify-content-around mx-auto">
 						<button class="btn btn-primary" type="submit" value="Ingresar" name="">Ingresar</button>
 					</div>
 				

@@ -5,15 +5,13 @@
 		<div id="carousel" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img src="../static/images/WhatsApp Image 2020-08-31 at 16.25.27.jpeg" class="d-block w-100" alt="...">
-					<div class="carousel-caption d-none d-md-block">
+					<img src="../static/images/WhatsApp Image 2020-08-31 at 16.25.27.jpeg" class="d-block w-100 mt-5 pt-3" alt="...">
+					<div class="carousel-caption d-md-block">
 					{% if user.is_authenticated %}
-					<button type="button" class="btn btn-primary" onclick="location.href='{% url 'Autotest:crear' %}'">Solicitar un examen Covid-19</button>
+						<button type="button" class="btn btn-primary align-self-center mx-auto d-sm-block" onclick="location.href='{% url 'Autotest:crear' %}'">Solicitar un examen Covid-19</button>
 					{% else %}
-					<button type="button" class="btn btn-primary" onclick="location.href='{% url 'login' %}'">INGRESAR</button>
-					
+						<button type="button" class="btn btn-primary" onclick="location.href='{% url 'login' %}'">INGRESAR</button>
 					{% endif %}
-
 				</div>
 			</div>
 		</div>
@@ -23,27 +21,27 @@
 
 	<section class="casos">
 		<div class="container-lg container-sm-4">
-			<blockquote class="blockquote">
-  			
+			<blockquote class="blockquote text-center my-4">
+				Situacion epidemiologica
 			</blockquote>
-			<div class="row justify-content-center">
-				<div class="col-lg-3 mx-4">
+			<div class="row row-sm justify-content-center">
+				<div class="col-lg-3 mx-4 d-flex justify-content-center">
 					<div class="card text-center mb-5" style="width: 18rem;">
 						<div class="card-body">
-						  <h5 class="card-title">Casos en Resistencia</h5>
-						  <p class="card-text">Positivos: 6784</p>
-						  <p class="card-text">Recuperados: 6125 </p>
-						  <p class="card-text">Fallecidos: 278</p>
+						  <h5 class="card-title">Casos en Chaco</h5>
+						  <p class="card-text">Positivos: 8243</p>
+						  <p class="card-text">Recuperados: 7280 </p>
+						  <p class="card-text">Fallecidos: 284</p>
 						</div>
 					  </div>
 				</div>
-				<div class="col-lg-3 mx-4">
+				<div class="col-lg-3 mx-4 d-flex justify-content-center">
 					<div class="card text-center mb-5" style="width: 18rem;">
 						<div class="card-body">
 							<h5 class="card-title">Casos en Argentina</h5>
-							<p class="card-text">Positivos: 685987</p>
-							<p class="card-text">Recuperados:547366 </p>
-							<p class="card-text">Fallecidos: 6874</p>
+							<p class="card-text">Positivos: 723000</p>
+							<p class="card-text">Recuperados:577366 </p>
+							<p class="card-text">Fallecidos: 16114</p>
 						  </div>
 					  </div>
 				</div>

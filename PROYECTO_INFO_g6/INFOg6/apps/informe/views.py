@@ -146,8 +146,6 @@ def Informe(request):
     return render(request, 'informe/informeTemplate.html', context)
 
 
-
-
 def ListarAutotest(request):
 
     context = {}

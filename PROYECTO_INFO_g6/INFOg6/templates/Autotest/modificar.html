@@ -10,8 +10,6 @@
 					<h2 class="text-center">Editar Solicitud</h2>	
 					{{form.errors}}
 					<form method="POST">{% csrf_token %}
-					
-						
 							<div class="col-lg-12 mb-3 mx-0">
 								<label for="{{form.fecha_hisopado.label}}">Fecha de hisopado</label>
 								<div class="input-group form-group date" id="datetimepicker1" data-target-input="nearest">

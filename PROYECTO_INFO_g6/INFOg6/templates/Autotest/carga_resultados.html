@@ -5,8 +5,11 @@
     <div class="row">
       <div class="col-lg-12 my-6 py-5">
         <h3 class="text-justify">Lista de Solicitudes</h3>
-        <a class="btn-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <a class="btn btn-outline-secondary ml-2 my-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
           Filtrar
+          <svg width="1.4em" height="1.4em" viewBox="0 0 16 16" class="bi bi-filter-left align-self-baseline" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+          </svg>
         </a>
         <div class="collapse pl-2 mb-2" id="collapseExample">
           <form class="form-row input-group mb-3" method="GET">
@@ -24,7 +27,6 @@
         </div>
         <!--FIN FILTRO-->
         <div id="accordion">
-          <!--FILTROS-->
             {% if dni %}
               {%if solicitudes != None %}
                 {% for p in solicitudes %}
@@ -48,23 +50,23 @@
                           <h6 class="text"><b>Dni:</b> {{p.usuario.dni}}</h6>
                           <h6 class="text"><b>Domicilio</b> {{p.usuario.domicilio}}</h6>
                             {% if p.estado == 1 %}
-                              {% if p.fecha_hisopado %}
+                              {% if p.fecha_hisopado and p.resultado == None %}
                                 <h6 class="text"><b>Estado:</b>Hisopado asignado</h6>
                                 <h6 class="text"><b>Fecha de hisopado:</b>{{p.fecha_hisopado}}</h6>
                               {% else %}
                                 <h6 class="text"><b>Estado:</b>En espera de asignacion de turno</h6>
                                 <h6 class="text"><b>Fecha de hisopado:</b>En espera de asignacion de fecha</h6>
                               {% endif %}
-                            {% elif p.estado == 2 %}
-                              <h6 class="text"><b>Estado:</b>Hisopado realizado, en espera de resultado</h6>
+                            {% elif p.estado == 2 and p.resultado == None%}
+                              <h6 class="text"><b>Estado:</b>Hisopado asignado</h6>
                               <h6 class="text"><b>Fecha de hisopado:</b>{{p.fecha_hisopado}}</h6>
                               <h6 class="text"><b>Resultado:</b>En espera..</h6>
                             {% else %}
                               <h6 class="text"><b>Estado:</b>Realizado</h6>
                               <h6 class="text"><b>Fecha de hisopado:</b>{{p.fecha_hisopado}}</h6>
-                              {% if p.resultado %}
+                              {% if p.resultado == True %}
                                 <h6 class="text"><b>Resultado:</b>Positivo COVID-19</h6>
-                              {% else %}
+                              {% elif  p.resultado == False%}
                                 <h6 class="text"><b>Resultado:</b>Negativo COVID-19</h6>
                               {% endif %}
                             {% endif %} 

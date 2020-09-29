@@ -103,9 +103,9 @@ class Modificar(UpdateView):
 	def form_valid(self, form):
 		unaSolicitud = form.save(commit = False)
 		if unaSolicitud.fecha_hisopado:
-			unaSolicitud.estado= 2
-		if unaSolicitud.resultado:
-			unaSolicitud.estado=3
+			unaSolicitud.estado = 2
+		if unaSolicitud.resultado != None:
+			unaSolicitud.estado = 3
 		unaSolicitud.save()
 
 		return redirect(self.success_url)

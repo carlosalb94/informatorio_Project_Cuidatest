@@ -12,7 +12,7 @@
                         <div class="card-header bg-light" id="heading_{{p.id}}">
                           <h5 class="mb-0">
                               <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_{{p.id}}"  aria-expanded="false" aria-controls="collapse_{{p.id}}">
-                              Solicitado el: {{p.fecha_creacion}}
+                              Solicitud numero: {{p.id}} | Fecha: {{p.fecha_creacion}}
                               </button>
                           </h5>
                         </div>
@@ -26,21 +26,21 @@
                               <h4 class="text">Numero solicitud: {{p.id}}</h4>
                               <h6 class="text"><b>Usuario:</b> {{p.usuario}}</h6>
                               {% if p.estado == 1 %}
-                                {% if p.fecha_hisopado %}
+                                {% if p.fecha_hisopado and p.resultado == None  %}
                                   <h6 class="text"><b>Estado:</b>Turno asignado</h6>
                                   <h6 class="text"><b>Fecha de hisopado:</b>{{ p.fecha_hisopado }}</h6>
                                 {% else %}
                                   <h6 class="text"><b>Estado:</b> Pendiente para hisopado</h6>
                                   <h6 class="text"><b>Fecha de hisopado:</b>En espera de asignacion de turno</h6>
                                 {% endif %}
-                              {% elif p.estado == 2 %}
-                                <h6 class="text"><b>Estado:</b >Hisopado Realizado</h6>
+                              {% elif p.estado == 2 and p.resultado == None %}
+                                <h6 class="text"><b>Estado:</b>Turno asignado</h6>
                                 <h6 class="text"><b>Fecha de hisopado:</b>{{ p.fecha_hisopado }}</h6>
                                 <h6 class="text"><b>Resultado:</b>En espera..</h6>
-                              {%else%}
+                              {%elif p.estado == 3 and p.resultado != None %}
                                 <h6 class="text"><b>Estado:</b> Realizado</h6>
                                 <h6 class="text"><b>Fecha de hisopado:</b>{{ p.fecha_hisopado }}</h6>
-                                {% if p.resultado %}
+                                {% if p.resultado%}
                                   <h6 class="text"><b>Resultado:</b> Positivo COVID-19</h6>
                                 {%else%}
                                   <h6 class="text"><b>Resultado:</b> Negativo COVID-19</h6>
