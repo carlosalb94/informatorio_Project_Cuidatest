@@ -1,7 +1,10 @@
 
-from random import randint, uniform,random
+from random import *
+import time
 import os
 
+
+seed(time.time())
 #---------------------------------------------------
 # CONSTANTES GLOBALES
 
