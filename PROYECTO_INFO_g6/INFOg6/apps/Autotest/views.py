@@ -58,7 +58,7 @@ def evaluarSolicitudPendiente(request):
 
 def ListarSolicitudes(request): 
 	context = {}
-	todos = Solicitud.objects.all()
+	todos = Solicitud.objects.all().order_by('-id')
 	context['solicitudes'] = todos
 	
 	return render(request,'Autotest/listarsolicitudes.html',context)
@@ -68,7 +68,9 @@ def CargaResultados(request):
 	
 	unId = request.GET.get('filtro1',None)
 	unDni = request.GET.get('filtro2', None)
-	solicitudes = Solicitud.objects.all()
+	unEstado =request.GET.get('filtro3', None)
+	solicitudes = Solicitud.objects.all().order_by('-id')
+
 	# ACA SE CONSULTAN LOS CAMPOS QUE ME PERMITE FILTRAR LA ORM
 	if unId:
 
@@ -82,9 +84,11 @@ def CargaResultados(request):
 			
 		if usuario:
 			id_usuario = usuario.id
-			solicitudes = Solicitud.objects.filter(usuario_id = id_usuario)
+			solicitudes = Solicitud.objects.filter(usuario_id = id_usuario).order_by('-id')
 		else:
 			solicitudes = None
+	elif unEstado:
+		solicitudes = Solicitud.objects.filter(estado = unEstado).order_by('-id')
 
 	#------------------------------------------------------------------
 	context['dni'] = unDni

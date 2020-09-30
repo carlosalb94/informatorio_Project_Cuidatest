@@ -8,7 +8,7 @@
 					<img src="../static/images/WhatsApp Image 2020-08-31 at 16.25.27.jpeg" class="d-block w-100 mt-5 pt-3" alt="...">
 					<div class="carousel-caption d-md-block">
 					{% if user.is_authenticated %}
-						<button type="button" class="btn btn-primary align-self-center mx-auto d-sm-block" onclick="location.href='{% url 'Autotest:crear' %}'">Solicitar un examen Covid-19</button>
+						<button type="button" class="btn btn-primary align-self-center mx-auto d-sm-block" onclick="location.href='{% url 'Autotest:pendiente' %}'">Solicitar un examen Covid-19</button>
 					{% else %}
 						<button type="button" class="btn btn-primary" onclick="location.href='{% url 'login' %}'">INGRESAR</button>
 					{% endif %}
@@ -41,7 +41,7 @@
 							<h5 class="card-title">Casos en Argentina</h5>
 							<p class="card-text">Positivos: 723000</p>
 							<p class="card-text">Recuperados:577366 </p>
-							<p class="card-text">Fallecidos: 16114</p>
+							<p class="card-text">Fallecidos: 1614</p>
 						  </div>
 					  </div>
 				</div>

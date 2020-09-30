@@ -11,15 +11,27 @@
             <path fill-rule="evenodd" d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
           </svg>
         </a>
-        <div class="collapse pl-2 mb-2" id="collapseExample">
-          <form class="form-row input-group mb-3" method="GET">
-            <input type="text" class="col-2 form-control" name="filtro1" placeholder="Filtrar por id" aria-label="Recipient's username" aria-describedby="button-addon1">
+        <div class="collapse pl-2 mb-2 col-lg-12 col-sm-12" id="collapseExample">
+
+          <form class="filtroId form-row input-group mb-3 mr-0 col-lg-3 col-sm-12" method="GET">
+            <input type="text" class=" form-control" name="filtro1" placeholder="Filtrar por id" aria-label="Recipient's username" aria-describedby="button-addon1">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="submit" id="button-addon1">Filtrar</button>
             </div>
           </form>
-          <form class="form-row input-group mb-3" method="GET">
-            <input type="text" class="col-2 form-control" name="filtro2" placeholder="Filtrar por Dni" aria-label="Recipient's username" aria-describedby="button-addon2">
+          <form class="filtroDni form-row input-group mb-3 mr-0 col-lg-3 col-sm-12" method="GET">
+            <input type="text" class="form-control" name="filtro2" placeholder="Filtrar por Dni" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Filtrar</button>
+            </div>
+          </form>
+          <form class="filrtoEstado form-row input-group mb-3 col-lg-3 mr-0 col-sm-12 " method="GET">
+            <select class="form-control" name="filtro3" id="">
+              <option value="" selected>Filtrar por estado</option>
+              <option value="1">Pendiente</option>
+              <option value="2">Con turno asignado</option>
+              <option value="3">Realizados</option>
+            </select>
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Filtrar</button>
             </div>
@@ -51,14 +63,14 @@
                           <h6 class="text"><b>Domicilio</b> {{p.usuario.domicilio}}</h6>
                             {% if p.estado == 1 %}
                               {% if p.fecha_hisopado and p.resultado == None %}
-                                <h6 class="text"><b>Estado:</b>Hisopado asignado</h6>
+                                <h6 class="text"><b>Estado:</b>Fecha de hisopado asignado</h6>
                                 <h6 class="text"><b>Fecha de hisopado:</b>{{p.fecha_hisopado}}</h6>
                               {% else %}
                                 <h6 class="text"><b>Estado:</b>En espera de asignacion de turno</h6>
                                 <h6 class="text"><b>Fecha de hisopado:</b>En espera de asignacion de fecha</h6>
                               {% endif %}
-                            {% elif p.estado == 2 and p.resultado == None%}
-                              <h6 class="text"><b>Estado:</b>Hisopado asignado</h6>
+                            {% elif p.estado == 2%}
+                              <h6 class="text"><b>Estado:</b>Fecha de hisopado asignado</h6>
                               <h6 class="text"><b>Fecha de hisopado:</b>{{p.fecha_hisopado}}</h6>
                               <h6 class="text"><b>Resultado:</b>En espera..</h6>
                             {% else %}
@@ -108,7 +120,7 @@
                               <h6 class="text"><b>Fecha de hisopado:</b>En espera de asignacion de fecha</h6>
                             {% endif %}
                           {% elif p.estado == 2 %}
-                            <h6 class="text"><b>Estado:</b>Hisopado realizado, en espera de resultado</h6>
+                            <h6 class="text"><b>Estado:</b>Fecha de hisopado asignado</h6>
                             <h6 class="text"><b>Fecha de hisopado:</b>{{p.fecha_hisopado}}</h6>
                             <h6 class="text"><b>Resultado:</b>En espera..</h6>
                           {% else %}
